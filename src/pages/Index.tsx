@@ -4,7 +4,8 @@ import CredenciaisSection from "@/components/CredenciaisSection";
 import DorSection from "@/components/DorSection";
 import PorQueIdealSection from "@/components/PorQueIdealSection";
 import EmpresaSection from "@/components/EmpresaSection";
-import RadiosCarouselSection from "@/components/RadiosCarouselSection"; // ← novo: unifica Hytera + Motorola
+import RadiosHyteraSection from "@/components/RadiosHyteraSection";
+import RadiosMotorolaSection from "@/components/RadiosMotorolaSection";
 import LocacaoCarouselSection from "@/components/LocacaoCarouselSection";
 import ServicosSection from "@/components/ServicosSection";
 import ClientesSection from "@/components/ClientesSection";
