@@ -1,3 +1,5 @@
+import React from "react";
+
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms400 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
 const ms500 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 500 };
@@ -163,17 +165,21 @@ const cards = [
   },
 ];
 
+const glassStyle: React.CSSProperties = {
+  borderColor: "rgba(31,156,216,0.22)",
+  boxShadow:
+    "0 2px 16px rgba(14,74,173,0.07), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(31,156,216,0.08)",
+  background: "linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,250,254,0.95) 100%)",
+};
+
 const FeatureCard = ({ card }: { card: (typeof cards)[0] }) => (
   <div
-    className="rounded-2xl border bg-white overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
-    style={{
-      borderColor: "rgba(31,156,216,0.15)",
-      boxShadow: "0 2px 16px rgba(14,74,173,0.07)",
-    }}
+    className="rounded-2xl border bg-white overflow-hidden flex flex-col h-full transition-all duration-300 hover:-translate-y-1"
+    style={{ ...glassStyle }}
   >
     <div
       className="w-full flex items-center justify-center overflow-hidden"
-      style={{ height: 150, background: "#F5FAFE" }}
+      style={{ height: 150, background: "linear-gradient(160deg, #f0f8ff 0%, #e8f4fc 100%)" }}
     >
       {card.illus}
     </div>
@@ -184,6 +190,87 @@ const FeatureCard = ({ card }: { card: (typeof cards)[0] }) => (
       <p className="text-sm leading-relaxed text-gray-500" style={ms400}>
         {card.desc}
       </p>
+    </div>
+  </div>
+);
+
+/* Card largo — layout horizontal com ilustração à esquerda */
+const FeatureCardWide = ({ card }: { card: (typeof cards)[0] }) => (
+  <div
+    className="rounded-2xl border overflow-hidden flex flex-row h-full transition-all duration-300 hover:-translate-y-1"
+    style={{
+      ...glassStyle,
+      position: "relative",
+    }}
+  >
+    {/* detalhe de canto tecnológico */}
+    <span
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: 48,
+        height: 48,
+        borderRight: "2px solid rgba(31,156,216,0.30)",
+        borderBottom: "2px solid rgba(31,156,216,0.30)",
+        borderBottomRightRadius: 12,
+        pointerEvents: "none",
+      }}
+    />
+    <span
+      style={{
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        width: 48,
+        height: 48,
+        borderLeft: "2px solid rgba(31,156,216,0.30)",
+        borderTop: "2px solid rgba(31,156,216,0.30)",
+        borderTopLeftRadius: 12,
+        pointerEvents: "none",
+      }}
+    />
+
+    {/* ilustração — lado esquerdo */}
+    <div
+      className="flex-shrink-0 flex items-center justify-center"
+      style={{
+        width: 220,
+        background: "linear-gradient(160deg, #f0f8ff 0%, #e8f4fc 100%)",
+        borderRight: "1px solid rgba(31,156,216,0.12)",
+      }}
+    >
+      <div style={{ width: 200, height: 140 }}>{card.illus}</div>
+    </div>
+
+    {/* texto — lado direito */}
+    <div className="flex flex-col justify-center p-7 space-y-2">
+      {/* badge tecnológico */}
+      <span
+        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] px-3 py-1 rounded-full self-start"
+        style={{
+          ...ms500,
+          color: "#1F9CD8",
+          background: "rgba(31,156,216,0.08)",
+          border: "1px solid rgba(31,156,216,0.22)",
+        }}
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-[#1F9CD8] animate-pulse inline-block" />
+        Certificação oficial
+      </span>
+      <h3 className="text-xl text-gray-900 leading-snug" style={ms700}>
+        {card.title}
+      </h3>
+      <p className="text-sm leading-relaxed text-gray-500" style={ms400}>
+        {card.desc}
+      </p>
+      {/* linha decorativa */}
+      <div className="pt-3 flex items-center gap-2">
+        <div style={{ height: 2, width: 32, background: "linear-gradient(90deg,#0E4AAD,#1F9CD8)", borderRadius: 2 }} />
+        <span className="text-xs text-gray-400" style={ms400}>
+          Hytera Wings+ Partner
+        </span>
+      </div>
     </div>
   </div>
 );
@@ -206,11 +293,14 @@ const CredenciaisSection = () => (
               <FeatureCard key={i} card={card} />
             ))}
           </div>
-          {/* linha 2 — 2 cards centralizados */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:w-2/3 mx-auto">
-            {cards.slice(3, 5).map((card, i) => (
-              <FeatureCard key={i + 3} card={card} />
-            ))}
+          {/* linha 2 — card 48h + Wings+ lado a lado, Wings+ mais largo */}
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+            <div className="sm:col-span-2">
+              <FeatureCard card={cards[3]} />
+            </div>
+            <div className="sm:col-span-3">
+              <FeatureCardWide card={cards[4]} />
+            </div>
           </div>
         </div>
       </div>
