@@ -239,48 +239,48 @@ const WingsCard = () => {
 const CredenciaisSection = () => (
   <section className="relative z-10 -mt-8">
     <div className="rounded-t-3xl overflow-hidden relative" style={{ minHeight: 300 }}>
-      {/* fundo escuro nas mesmas cores do hero/carrossel */}
+      {/* fundo — mesmas cores exatas do HeroSection */}
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(135deg, #071535 0%, #0a2255 50%, #071535 100%)" }}
+        style={{
+          background: "linear-gradient(160deg, #0d3578 0%, #0a2255 50%, #071a45 100%)",
+        }}
       />
-
-      {/* spotlight inferior — mesma paleta dos outros componentes */}
+      {/* orb topo esquerda */}
       <div
         className="absolute pointer-events-none"
         style={{
-          bottom: "-15%",
+          top: "-20%",
+          left: "-10%",
+          width: 520,
+          height: 520,
+          background: "radial-gradient(circle, rgba(31,156,216,0.22) 0%, transparent 65%)",
+          filter: "blur(80px)",
+        }}
+      />
+      {/* orb baixo direita */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          bottom: "-20%",
+          right: "-8%",
+          width: 460,
+          height: 460,
+          background: "radial-gradient(circle, rgba(14,74,173,0.20) 0%, transparent 65%)",
+          filter: "blur(80px)",
+        }}
+      />
+      {/* spotlight centro */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "50%",
           left: "50%",
-          transform: "translateX(-50%)",
-          width: 700,
-          height: 400,
-          background:
-            "radial-gradient(ellipse 55% 50% at 50% 90%, rgba(31,156,216,0.20) 0%, rgba(14,74,173,0.08) 45%, transparent 70%)",
-          filter: "blur(10px)",
-        }}
-      />
-      {/* orb esquerda */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "5%",
-          left: "-8%",
-          width: 360,
-          height: 360,
-          background: "radial-gradient(circle, rgba(14,74,173,0.16) 0%, transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-      {/* orb direita */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "0%",
-          right: "-5%",
-          width: 300,
+          transform: "translate(-50%,-50%)",
+          width: 600,
           height: 300,
-          background: "radial-gradient(circle, rgba(31,156,216,0.11) 0%, transparent 65%)",
-          filter: "blur(60px)",
+          background: "radial-gradient(ellipse, rgba(31,156,216,0.12) 0%, transparent 65%)",
+          filter: "blur(40px)",
         }}
       />
 
@@ -315,24 +315,12 @@ const CredenciaisSection = () => (
           </h2>
         </div>
 
-        {/* Linha 2: 3 colunas — col1: 18+ e 100% | col2: 200+ e Wings+ | col3: 48h */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {/* Coluna 1: 18+ em cima, 100% embaixo */}
-          <div className="flex flex-col gap-3">
-            <StatCard {...stats[0]} />
-            <StatCard {...stats[2]} />
-          </div>
-
-          {/* Coluna 2: 200+ em cima, Wings+ embaixo */}
-          <div className="flex flex-col gap-3">
-            <StatCard {...stats[1]} />
-            <WingsCard />
-          </div>
-
-          {/* Coluna 3: 48h em cima, espaço vazio ou extra embaixo */}
-          <div className="flex flex-col gap-3">
-            <StatCard {...stats[3]} />
-          </div>
+        {/* Uma linha só: 4 stats + Wings+ */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {stats.map((stat, i) => (
+            <StatCard key={i} {...stat} />
+          ))}
+          <WingsCard />
         </div>
       </div>
 
