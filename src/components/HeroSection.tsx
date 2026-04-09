@@ -1,60 +1,64 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
-const ms = { fontFamily: "'Montserrat', sans-serif" };
+const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 
 const HeroSection = () => {
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
-      style={{ background: "#071535" }}
+      style={{ background: "#0a2a5e" }}
     >
-      {/* ── Grade de pontos animada ── */}
+      {/* ── Fundo blur animado – camadas de luz azul ── */}
       <div
-        className="absolute inset-0 opacity-[0.14]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, #2072B9 1px, transparent 1px)",
-          backgroundSize: "38px 38px",
+          background:
+            "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(31,156,216,0.28) 0%, transparent 60%)," +
+            "radial-gradient(ellipse 60% 50% at 75% 70%, rgba(32,114,185,0.22) 0%, transparent 55%)," +
+            "radial-gradient(ellipse 50% 40% at 50% 10%, rgba(100,190,240,0.18) 0%, transparent 50%)," +
+            "linear-gradient(160deg, #0d3578 0%, #0a2255 50%, #071a45 100%)",
         }}
       />
 
-      {/* ── Linhas diagonais sutis ── */}
+      {/* ── Orb 1 – azul claro, topo esquerda ── */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full animate-float-orb"
         style={{
-          backgroundImage:
-            "repeating-linear-gradient(-45deg, #1F9CD8 0px, #1F9CD8 1px, transparent 0px, transparent 50%)",
-          backgroundSize: "28px 28px",
+          background: "radial-gradient(circle, rgba(31,156,216,0.35) 0%, transparent 65%)",
+          filter: "blur(80px)",
+        }}
+      />
+      {/* ── Orb 2 – azul médio, baixo direita ── */}
+      <div
+        className="absolute -bottom-40 -right-24 w-[540px] h-[540px] rounded-full animate-float-orb animation-delay-2000"
+        style={{
+          background: "radial-gradient(circle, rgba(32,114,185,0.30) 0%, transparent 65%)",
+          filter: "blur(90px)",
+        }}
+      />
+      {/* ── Orb 3 – azul muito claro, centro ── */}
+      <div
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[380px] h-[380px] rounded-full animate-float-orb animation-delay-1000"
+        style={{
+          background: "radial-gradient(circle, rgba(100,190,240,0.20) 0%, transparent 65%)",
+          filter: "blur(60px)",
         }}
       />
 
-      {/* ── Orbs de luz ── */}
-      <div
-        className="absolute -top-20 -left-20 w-[520px] h-[520px] rounded-full animate-float-orb"
-        style={{ background: "radial-gradient(circle, #0E4AAD55 0%, transparent 70%)", filter: "blur(60px)" }}
-      />
-      <div
-        className="absolute -bottom-24 -right-16 w-[460px] h-[460px] rounded-full animate-float-orb animation-delay-2000"
-        style={{ background: "radial-gradient(circle, #1F9CD840 0%, transparent 70%)", filter: "blur(70px)" }}
-      />
-      <div
-        className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[320px] h-[320px] rounded-full animate-float-orb animation-delay-1000"
-        style={{ background: "radial-gradient(circle, #2072B930 0%, transparent 70%)", filter: "blur(50px)" }}
-      />
-
-      {/* ── Anéis de radar ── */}
+      {/* ── Anéis de radar suaves ── */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         <div
           className="w-[480px] h-[480px] rounded-full border animate-pulse-ring"
-          style={{ borderColor: "rgba(31,156,216,0.12)" }}
+          style={{ borderColor: "rgba(100,190,240,0.15)" }}
         />
         <div
-          className="absolute inset-0 w-[480px] h-[480px] rounded-full border animate-pulse-ring animation-delay-1000"
-          style={{ borderColor: "rgba(31,156,216,0.08)" }}
+          className="absolute inset-0 rounded-full border animate-pulse-ring animation-delay-1000"
+          style={{ borderColor: "rgba(31,156,216,0.10)" }}
         />
         <div
           className="absolute -inset-[90px] w-[660px] h-[660px] rounded-full border animate-pulse-ring animation-delay-2000"
-          style={{ borderColor: "rgba(14,74,173,0.07)" }}
+          style={{ borderColor: "rgba(32,114,185,0.08)" }}
         />
       </div>
 
@@ -63,24 +67,25 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <div className="space-y-8 animate-fade-in-up">
+            {/* Badge */}
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm"
               style={{
                 ...ms,
-                background: "rgba(255,255,255,0.06)",
-                borderColor: "rgba(31,156,216,0.30)",
-                color: "#93c5e8",
+                background: "rgba(255,255,255,0.10)",
+                borderColor: "rgba(100,200,245,0.35)",
+                color: "#c8e9f8",
               }}
             >
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#1F9CD8" }} />
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#5bc8ef" }} />
               Wings+ Hytera Authorized Dealer
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white" style={ms}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white" style={ms}>
               Sua operação não pode parar por falta de{" "}
               <span
                 style={{
-                  backgroundImage: "linear-gradient(90deg, #1F9CD8, #2072B9)",
+                  backgroundImage: "linear-gradient(90deg, #5bc8ef, #a8e0f8)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -90,7 +95,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-lg max-w-lg" style={{ ...ms, color: "#93c5e8cc" }}>
+            <p className="text-lg max-w-lg" style={{ ...ms, fontWeight: 400, color: "rgba(200,233,248,0.80)" }}>
               Locação, venda e assistência técnica em radiocomunicadores Hytera e Motorola. Cobertura nacional com
               entrega em até 48h.
             </p>
@@ -99,11 +104,11 @@ const HeroSection = () => {
               <Button
                 asChild
                 size="lg"
-                className="font-bold text-base text-white"
+                className="text-base text-white"
                 style={{
                   ...ms,
-                  background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
-                  boxShadow: "0 8px 28px rgba(31,156,216,0.28)",
+                  background: "linear-gradient(90deg, #1263c8, #1F9CD8)",
+                  boxShadow: "0 8px 32px rgba(31,156,216,0.35)",
                 }}
               >
                 <a href="#contato">Quero uma cotação agora</a>
@@ -112,12 +117,12 @@ const HeroSection = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-bold text-base hover:text-white transition-colors"
+                className="text-base hover:text-white transition-colors"
                 style={{
                   ...ms,
-                  borderColor: "rgba(31,156,216,0.35)",
-                  background: "rgba(255,255,255,0.04)",
-                  color: "#93c5e8",
+                  borderColor: "rgba(100,200,245,0.40)",
+                  background: "rgba(255,255,255,0.07)",
+                  color: "#c8e9f8",
                 }}
               >
                 <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
@@ -135,10 +140,13 @@ const HeroSection = () => {
                 { value: "Wings+", label: "cert. Hytera" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-xl font-black text-white" style={ms}>
+                  <div className="text-xl text-white" style={ms}>
                     {stat.value}
                   </div>
-                  <div className="text-xs uppercase tracking-wider" style={{ ...ms, color: "#93c5e880" }}>
+                  <div
+                    className="text-xs uppercase tracking-wider"
+                    style={{ ...ms, fontWeight: 500, color: "rgba(200,233,248,0.55)" }}
+                  >
                     {stat.label}
                   </div>
                 </div>
@@ -152,7 +160,7 @@ const HeroSection = () => {
               src="/assets/hero-radios-hytera.png"
               alt="Rádios Hytera profissionais"
               className="w-[420px] animate-float"
-              style={{ filter: "drop-shadow(0 16px 40px rgba(14,74,173,0.50))" }}
+              style={{ filter: "drop-shadow(0 16px 48px rgba(31,156,216,0.55))" }}
             />
 
             {/* Badges */}
@@ -163,12 +171,13 @@ const HeroSection = () => {
             ].map((badge) => (
               <div
                 key={badge.text}
-                className={`absolute ${badge.pos} px-3 py-1.5 rounded-full border text-xs font-semibold backdrop-blur-sm`}
+                className={`absolute ${badge.pos} px-3 py-1.5 rounded-full border text-xs backdrop-blur-sm`}
                 style={{
                   ...ms,
-                  background: "rgba(14,74,173,0.55)",
-                  borderColor: "rgba(31,156,216,0.35)",
-                  color: "#93c5e8",
+                  fontWeight: 600,
+                  background: "rgba(18,99,200,0.45)",
+                  borderColor: "rgba(100,200,245,0.40)",
+                  color: "#c8e9f8",
                 }}
               >
                 {badge.text}
