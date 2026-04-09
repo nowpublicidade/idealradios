@@ -149,22 +149,10 @@ const HeroSection = () => {
           {/* Rádios flutuantes */}
           <div className="relative hidden lg:flex justify-center items-center min-h-[500px]">
             <img
-              src="/assets/radios/imgi_6_HP786-680x680.png"
-              alt="Rádio HP786 Hytera"
-              className="w-48 absolute top-10 left-10 animate-float"
+              src="/assets/hero-radios-hytera.png"
+              alt="Rádios Hytera profissionais"
+              className="w-[420px] animate-float"
               style={{ filter: "drop-shadow(0 16px 40px rgba(14,74,173,0.50))" }}
-            />
-            <img
-              src="/assets/radios/imgi_8_HP686-680x680.png"
-              alt="Rádio HP686 Hytera"
-              className="w-44 absolute top-20 right-16 animate-float animation-delay-200"
-              style={{ filter: "drop-shadow(0 16px 40px rgba(31,156,216,0.45))" }}
-            />
-            <img
-              src="/assets/radios/imgi_4_PT890-680x680.png"
-              alt="Rádio PT890 Hytera"
-              className="w-40 absolute bottom-16 left-1/2 -translate-x-1/2 animate-float animation-delay-400"
-              style={{ filter: "drop-shadow(0 16px 40px rgba(32,114,185,0.45))" }}
             />
 
             {/* Badges */}
