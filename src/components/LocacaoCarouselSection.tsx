@@ -3,15 +3,42 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { GripHorizontal } from "lucide-react";
 
+const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
+
 const locacaoRadios = [
-  { name: "HP786", img: "/assets/radios/imgi_6_HP786-680x680.png", tag: "DMR", desc: "Display colorido, GPS, Bluetooth 5.0" },
+  {
+    name: "HP786",
+    img: "/assets/radios/imgi_6_HP786-680x680.png",
+    tag: "DMR",
+    desc: "Display colorido, GPS, Bluetooth 5.0",
+  },
   { name: "HP706", img: "/assets/radios/imgi_7_HP706-680x680.png", tag: "DMR", desc: "IP68, Criptografia AES-256" },
-  { name: "HP686", img: "/assets/radios/imgi_8_HP686-680x680.png", tag: "DMR", desc: "Compacto, áudio HD, longa bateria" },
-  { name: "HP606", img: "/assets/radios/imgi_9_HP606-680x680.png", tag: "DMR", desc: "IP67, robusto, entrada simplificada" },
-  { name: "HP506", img: "/assets/radios/imgi_10_HP506-7-680x680.png", tag: "DMR", desc: "Ultra compacto, ideal para eventos" },
+  {
+    name: "HP686",
+    img: "/assets/radios/imgi_8_HP686-680x680.png",
+    tag: "DMR",
+    desc: "Compacto, áudio HD, longa bateria",
+  },
+  {
+    name: "HP606",
+    img: "/assets/radios/imgi_9_HP606-680x680.png",
+    tag: "DMR",
+    desc: "IP67, robusto, entrada simplificada",
+  },
+  {
+    name: "HP506",
+    img: "/assets/radios/imgi_10_HP506-7-680x680.png",
+    tag: "DMR",
+    desc: "Ultra compacto, ideal para eventos",
+  },
   { name: "PT890", img: "/assets/radios/imgi_4_PT890-680x680.png", tag: "DMR", desc: "Tela grande, GPS + BeiDou" },
   { name: "PT590", img: "/assets/radios/imgi_5_PT590-680x680.png", tag: "DMR", desc: "Design slim, MIL-STD-810" },
-  { name: "PNC-380", img: "/assets/radios/imgi_12_PNC-380-3.png", tag: "PoC 4G", desc: "Push-to-talk via rede celular" },
+  {
+    name: "PNC-380",
+    img: "/assets/radios/imgi_12_PNC-380-3.png",
+    tag: "PoC 4G",
+    desc: "Push-to-talk via rede celular",
+  },
 ];
 
 const LocacaoCarouselSection = () => {
@@ -20,20 +47,55 @@ const LocacaoCarouselSection = () => {
 
   return (
     <section className="relative z-10">
-      <div className="bg-ideal-dark rounded-t-3xl -mt-8 py-20 relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-72 h-72 bg-ideal-500/15 rounded-full blur-[100px] animate-float-orb" />
+      <div
+        className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 80% 20%, rgba(91,200,239,0.18) 0%, transparent 55%)," +
+            "radial-gradient(ellipse 60% 45% at 15% 75%, rgba(31,156,216,0.15) 0%, transparent 50%)," +
+            "linear-gradient(160deg, #0e3070 0%, #0a2560 50%, #091e52 100%)",
+        }}
+      >
+        {/* Orbs blur */}
+        <div
+          className="absolute top-0 right-0 w-80 h-80 rounded-full animate-float-orb"
+          style={{
+            background: "radial-gradient(circle, rgba(91,200,239,0.22) 0%, transparent 65%)",
+            filter: "blur(90px)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-10 w-56 h-56 rounded-full animate-float-orb animation-delay-2000"
+          style={{
+            background: "radial-gradient(circle, rgba(32,114,185,0.18) 0%, transparent 65%)",
+            filter: "blur(70px)",
+          }}
+        />
 
         <div className="container mx-auto px-4 relative z-10 mb-8">
-          <span className="text-xs font-bold uppercase tracking-[3px] text-ideal-300 block text-center mb-4">
+          <span
+            className="text-xs uppercase tracking-[3px] block text-center mb-4"
+            style={{ ...ms, fontWeight: 600, color: "#7ec8ef" }}
+          >
             Locação de radiocomunicadores
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-center text-primary-foreground font-display mb-4">
+          <h2 className="text-3xl md:text-4xl text-center text-white mb-4" style={ms}>
             Rádios na sua mão.{" "}
-            <span className="bg-gradient-to-r from-ideal-400 to-ideal-300 bg-clip-text text-transparent">
+            <span
+              style={{
+                backgroundImage: "linear-gradient(90deg, #5bc8ef, #a8e0f8)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
               No prazo que você precisa.
             </span>
           </h2>
-          <p className="text-center text-ideal-200/70 max-w-2xl mx-auto">
+          <p
+            className="text-center max-w-2xl mx-auto"
+            style={{ ...ms, fontWeight: 400, color: "rgba(200,233,248,0.70)" }}
+          >
             Sem burocracia, sem estoque parado, sem preocupação com manutenção. Você aluga, a gente entrega funcionando.
           </p>
         </div>
@@ -41,8 +103,14 @@ const LocacaoCarouselSection = () => {
         {/* Drag carousel */}
         <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef}>
           {/* Edge fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-44 bg-gradient-to-r from-ideal-dark to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-44 bg-gradient-to-l from-ideal-dark to-transparent z-10 pointer-events-none" />
+          <div
+            className="absolute left-0 top-0 bottom-0 w-44 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to right, #0e3070, transparent)" }}
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-44 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to left, #091e52, transparent)" }}
+          />
 
           <motion.div
             className="flex gap-4 px-8"
@@ -54,24 +122,47 @@ const LocacaoCarouselSection = () => {
             {locacaoRadios.map((radio) => (
               <div
                 key={radio.name}
-                className="w-[280px] flex-shrink-0 rounded-2xl overflow-hidden border border-ideal-500/15 hover:border-ideal-500/45 bg-ideal-800/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1"
+                className="w-[280px] flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+                style={{
+                  background: "#ffffff",
+                  boxShadow: "0 4px 24px rgba(14,74,173,0.12)",
+                  border: "1px solid rgba(31,156,216,0.12)",
+                }}
               >
-                <div className="bg-ideal-900/50 p-6 flex items-center justify-center h-[220px]">
+                <div className="p-6 flex items-center justify-center h-[220px]" style={{ background: "#f0f7ff" }}>
                   <img src={radio.img} alt={radio.name} className="h-40 object-contain" loading="lazy" />
                 </div>
                 <div className="p-5 space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-black text-primary-foreground font-display">{radio.name}</h3>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ideal-500/15 text-ideal-300 border border-ideal-500/30">
+                    <h3 className="text-lg" style={{ ...ms, color: "#0a2a5e" }}>
+                      {radio.name}
+                    </h3>
+                    <span
+                      className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full"
+                      style={{
+                        ...ms,
+                        fontWeight: 600,
+                        background: "rgba(31,156,216,0.10)",
+                        color: "#1263c8",
+                        border: "1px solid rgba(31,156,216,0.25)",
+                      }}
+                    >
                       {radio.tag}
                     </span>
                   </div>
-                  <p className="text-xs text-ideal-200/55">{radio.desc}</p>
+                  <p className="text-xs" style={{ ...ms, fontWeight: 400, color: "#4a6080" }}>
+                    {radio.desc}
+                  </p>
                   <Button
                     asChild
-                    variant="outline"
                     size="sm"
-                    className="w-full border-ideal-500/30 text-ideal-300 hover:bg-ideal-500/10 font-bold"
+                    className="w-full text-white"
+                    style={{
+                      ...ms,
+                      fontWeight: 600,
+                      background: "linear-gradient(90deg, #1263c8, #1F9CD8)",
+                      boxShadow: "0 4px 14px rgba(31,156,216,0.30)",
+                    }}
                   >
                     <a href="#contato">Solicitar locação</a>
                   </Button>
@@ -81,7 +172,10 @@ const LocacaoCarouselSection = () => {
           </motion.div>
 
           {!dragged && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-ideal-300/50 text-xs font-semibold animate-pulse z-20">
+            <div
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-xs animate-pulse z-20"
+              style={{ ...ms, fontWeight: 500, color: "rgba(126,200,239,0.55)" }}
+            >
               <GripHorizontal size={14} />
               arraste para explorar
             </div>
@@ -92,11 +186,18 @@ const LocacaoCarouselSection = () => {
           <Button
             asChild
             size="lg"
-            className="bg-gradient-to-r from-ideal-500 to-ideal-400 text-primary-foreground font-bold shadow-xl shadow-ideal-500/30"
+            className="text-white"
+            style={{
+              ...ms,
+              background: "linear-gradient(90deg, #1263c8, #1F9CD8)",
+              boxShadow: "0 8px 32px rgba(31,156,216,0.35)",
+            }}
           >
             <a href="#contato">Verificar disponibilidade e solicitar proposta</a>
           </Button>
-          <p className="text-xs text-ideal-200/40 mt-3">Resposta em até 2h úteis · Cotação gratuita</p>
+          <p className="text-xs mt-3" style={{ ...ms, fontWeight: 400, color: "rgba(200,233,248,0.40)" }}>
+            Resposta em até 2h úteis · Cotação gratuita
+          </p>
         </div>
       </div>
     </section>
