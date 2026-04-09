@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Wrench, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import { GlowCard } from "@/components/GlowCard";
+
+const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 
 const diferenciais = [
   "Técnicos certificados pela Motorola e pela Hytera",
@@ -11,13 +13,23 @@ const diferenciais = [
   "Orçamento antes de qualquer serviço",
 ];
 
+const dmrItems = [
+  "Projeto de cobertura sob medida para sua área",
+  "Implantação de rede DMR Tier II e III",
+  "Software de despacho com mapa em tempo real",
+  "GPS e rastreamento de equipes integrados",
+  "Criptografia para operações sensíveis",
+  "Treinamento da equipe incluído",
+];
+
 const ServicosSection = () => {
   return (
     <section id="setores" className="relative z-10">
       <div className="bg-background rounded-t-3xl -mt-8 py-20">
         <div className="container mx-auto px-4">
+          {/* ── Assistência técnica ── */}
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            {/* Image side */}
+            {/* Imagem */}
             <div className="relative">
               <img
                 src="/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg"
@@ -25,84 +37,99 @@ const ServicosSection = () => {
                 className="rounded-2xl w-full object-cover shadow-lg"
                 loading="lazy"
               />
-              <div className="absolute -bottom-4 -right-4 bg-ideal-500 text-primary-foreground rounded-xl px-4 py-2 font-bold text-sm shadow-lg">
+              <div
+                className="absolute -bottom-4 -right-4 rounded-xl px-4 py-2 text-sm shadow-lg text-white"
+                style={{ ...ms, background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)" }}
+              >
                 48h de atendimento
               </div>
             </div>
 
-            {/* Text side */}
+            {/* Texto */}
             <div className="space-y-6">
-              <span className="text-xs font-bold uppercase tracking-[3px] text-ideal-400">
+              <span className="text-xs uppercase tracking-[3px]" style={{ ...ms, fontWeight: 600, color: "#1F9CD8" }}>
                 Assistência técnica autorizada
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-foreground font-display">
-                Seu rádio quebrou. A gente resolve em até{" "}
-                <span className="text-ideal-500">48h</span>.
+              <h2 className="text-3xl md:text-4xl text-foreground" style={ms}>
+                Seu rádio quebrou. A gente resolve em até <span style={{ color: "#1F9CD8" }}>48h</span>.
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Não manda pra fabricante esperar meses. A Ideal tem laboratório próprio,
-                técnicos certificados e peças originais em estoque.
+              <p className="text-muted-foreground leading-relaxed" style={{ ...ms, fontWeight: 400 }}>
+                Não manda pra fabricante esperar meses. A Ideal tem laboratório próprio, técnicos certificados e peças
+                originais em estoque.
               </p>
 
-              <ul className="space-y-2">
+              <div className="grid grid-cols-1 gap-3">
                 {diferenciais.map((d, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-                    <CheckCircle className="w-4 h-4 text-ideal-500 shrink-0 mt-0.5" />
-                    {d}
-                  </li>
+                  <GlowCard key={i} intensity="soft" className="px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-4 h-4 shrink-0" style={{ color: "#1F9CD8" }} />
+                      <span className="text-sm text-foreground" style={{ ...ms, fontWeight: 500 }}>
+                        {d}
+                      </span>
+                    </div>
+                  </GlowCard>
                 ))}
-              </ul>
+              </div>
 
               <Button
                 asChild
-                className="bg-gradient-to-r from-ideal-500 to-ideal-400 text-primary-foreground font-bold shadow-lg shadow-ideal-500/30"
+                className="text-white"
+                style={{
+                  ...ms,
+                  background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
+                  boxShadow: "0 8px 24px rgba(31,156,216,0.30)",
+                }}
               >
                 <a href="#contato">Solicitar assistência técnica agora</a>
               </Button>
-              <p className="text-xs text-muted-foreground">Diagnóstico sem compromisso · Peça original garantida</p>
+              <p className="text-xs text-muted-foreground" style={{ ...ms, fontWeight: 400 }}>
+                Diagnóstico sem compromisso · Peça original garantida
+              </p>
             </div>
           </div>
 
-          {/* Sistemas DMR section */}
+          {/* ── Sistemas DMR ── */}
           <div className="mt-24 max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 order-2 lg:order-1">
-                <span className="text-xs font-bold uppercase tracking-[3px] text-ideal-400">
+                <span className="text-xs uppercase tracking-[3px]" style={{ ...ms, fontWeight: 600, color: "#1F9CD8" }}>
                   Sistemas DMR e TETRA
                 </span>
-                <h2 className="text-3xl md:text-4xl font-black text-foreground font-display">
-                  Enquanto você conserta o antigo,{" "}
-                  <span className="text-ideal-500">pensa no novo</span>.
+                <h2 className="text-3xl md:text-4xl text-foreground" style={ms}>
+                  Enquanto você conserta o antigo, <span style={{ color: "#1F9CD8" }}>pensa no novo</span>.
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Sistema analógico cansou? Interferência, alcance limitado, sem registro de chamada, sem GPS?
-                  A migração para digital é mais simples do que parece — e a Ideal faz tudo.
+                <p className="text-muted-foreground leading-relaxed" style={{ ...ms, fontWeight: 400 }}>
+                  Sistema analógico cansou? Interferência, alcance limitado, sem registro de chamada, sem GPS? A
+                  migração para digital é mais simples do que parece — e a Ideal faz tudo.
                 </p>
 
-                <ul className="space-y-2">
-                  {[
-                    "Projeto de cobertura sob medida para sua área",
-                    "Implantação de rede DMR Tier II e III",
-                    "Software de despacho com mapa em tempo real",
-                    "GPS e rastreamento de equipes integrados",
-                    "Criptografia para operações sensíveis",
-                    "Treinamento da equipe incluído",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-                      <CheckCircle className="w-4 h-4 text-ideal-500 shrink-0 mt-0.5" />
-                      {item}
-                    </li>
+                <div className="grid grid-cols-1 gap-3">
+                  {dmrItems.map((item, i) => (
+                    <GlowCard key={i} intensity="soft" className="px-4 py-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-4 h-4 shrink-0" style={{ color: "#1F9CD8" }} />
+                        <span className="text-sm text-foreground" style={{ ...ms, fontWeight: 500 }}>
+                          {item}
+                        </span>
+                      </div>
+                    </GlowCard>
                   ))}
-                </ul>
+                </div>
 
                 <Button
                   asChild
                   variant="outline"
-                  className="border-ideal-400/40 text-ideal-500 hover:bg-ideal-100 font-bold"
+                  style={{
+                    ...ms,
+                    borderColor: "rgba(31,156,216,0.40)",
+                    color: "#1F9CD8",
+                  }}
                 >
                   <a href="#contato">Quero entender como migrar para digital</a>
                 </Button>
-                <p className="text-xs text-muted-foreground">Consultoria gratuita · Sem compromisso</p>
+                <p className="text-xs text-muted-foreground" style={{ ...ms, fontWeight: 400 }}>
+                  Consultoria gratuita · Sem compromisso
+                </p>
               </div>
 
               <div className="order-1 lg:order-2">
