@@ -22,8 +22,7 @@ const Index = () => {
       <DorSection />
       <PorQueIdealSection />
       <EmpresaSection />
-      <RadiosHyteraSection />
-      <RadiosMotorolaSection />
+      <RadiosCarouselSection />
       <LocacaoCarouselSection />
       <ServicosSection />
       <ClientesSection />
