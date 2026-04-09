@@ -1,309 +1,349 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
+const ms600 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
 const ms400 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
-const ms500 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 500 };
 
-/* ─── Ilustração: 18 anos — relógio estilizado ─── */
-const Illus18Anos = () => (
-  <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="30" y="10" width="160" height="110" rx="14" fill="#EBF5FC" />
-    <circle cx="110" cy="64" r="38" fill="white" stroke="#DAEEF9" strokeWidth="2" />
-    <line x1="110" y1="64" x2="110" y2="38" stroke="#0E4AAD" strokeWidth="3" strokeLinecap="round" />
-    <line x1="110" y1="64" x2="130" y2="74" stroke="#1F9CD8" strokeWidth="3" strokeLinecap="round" />
-    <circle cx="110" cy="64" r="4" fill="#0E4AAD" />
-    {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg, i) => {
-      const rad = (deg * Math.PI) / 180;
-      const r1 = 34;
-      const r2 = i % 3 === 0 ? 28 : 31;
-      return (
-        <line
-          key={deg}
-          x1={110 + r1 * Math.sin(rad)}
-          y1={64 - r1 * Math.cos(rad)}
-          x2={110 + r2 * Math.sin(rad)}
-          y2={64 - r2 * Math.cos(rad)}
-          stroke={i % 3 === 0 ? "#0E4AAD" : "#DAEEF9"}
-          strokeWidth={i % 3 === 0 ? 2.5 : 1.5}
-          strokeLinecap="round"
-        />
+/* ── GlowCard inline (mesmo efeito do projeto) ── */
+let _cssInjected = false;
+const injectGlowCSS = () => {
+  if (_cssInjected || typeof document === "undefined") return;
+  _cssInjected = true;
+  const s = document.createElement("style");
+  s.innerHTML = `
+    .ideal-stat-glow::before,
+    .ideal-stat-glow::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      background-attachment: fixed;
+      background-size: calc(100% + 4px) calc(100% + 4px);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+      mask-clip: padding-box, border-box;
+      mask-composite: intersect;
+    }
+    .ideal-stat-glow::before {
+      background-image: radial-gradient(
+        165px 165px at calc(var(--gx,0)*1px) calc(var(--gy,0)*1px),
+        hsl(calc(205 + var(--gxp,0)*22) 88% 58% / 0.95), transparent 100%
       );
-    })}
-    <rect x="72" y="8" width="76" height="26" rx="8" fill="#0E4AAD" />
-    <text x="110" y="25" textAnchor="middle" fill="white" fontSize="13" fontFamily="Montserrat" fontWeight="700">
-      18+ anos
-    </text>
-  </svg>
-);
+      filter: brightness(1.9);
+    }
+    .ideal-stat-glow::after {
+      background-image: radial-gradient(
+        110px 110px at calc(var(--gx,0)*1px) calc(var(--gy,0)*1px),
+        hsl(0 100% 100% / 0.55), transparent 100%
+      );
+    }
+  `;
+  document.head.appendChild(s);
+};
 
-/* ─── Ilustração: 200+ empresas ─── */
-const Illus200Empresas = () => (
-  <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="18" y="20" width="78" height="90" rx="12" fill="white" stroke="#DAEEF9" strokeWidth="1.5" />
-    {[28, 42, 56, 70].map((y) => (
-      <rect key={y} x="26" y={y} width={y === 28 ? 62 : y === 42 ? 38 : 50} height="8" rx="4" fill="#EBF5FC" />
-    ))}
-    <rect x="56" y="12" width="78" height="90" rx="12" fill="white" stroke="#DAEEF9" strokeWidth="1.5" />
-    {[22, 36, 50, 64].map((y) => (
-      <rect key={y} x="64" y={y} width={y === 22 ? 62 : y === 36 ? 38 : 50} height="8" rx="4" fill="#EBF5FC" />
-    ))}
-    <rect x="98" y="20" width="100" height="90" rx="12" fill="#0E4AAD" />
-    {[32, 46, 60, 74].map((y) => (
-      <rect
-        key={y}
-        x="110"
-        y={y}
-        width={y === 32 ? 76 : y === 46 ? 48 : 62}
-        height="8"
-        rx="4"
-        fill="rgba(255,255,255,0.18)"
-      />
-    ))}
-    <rect x="106" y="6" width="84" height="22" rx="6" fill="#1F9CD8" />
-    <text x="148" y="21" textAnchor="middle" fill="white" fontSize="11" fontFamily="Montserrat" fontWeight="700">
-      200+ clientes
-    </text>
-  </svg>
-);
+const StatCard = ({ icon, value, label }: { icon: React.ReactNode; value: string; label: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-/* ─── Ilustração: Cobertura nacional ─── */
-const IllusCobertura = () => (
-  <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <ellipse cx="110" cy="68" rx="85" ry="55" fill="#EBF5FC" />
-    <path
-      d="M90 25 C100 20 115 22 125 28 C138 35 145 48 142 60 C140 70 148 78 145 88 C142 98 132 105 120 108 C108 111 96 108 88 100 C80 92 78 80 82 70 C86 60 80 50 82 40 C84 32 88 27 90 25Z"
-      fill="white"
-      stroke="#DAEEF9"
-      strokeWidth="1.5"
-    />
-    {[
-      { cx: 118, cy: 55, big: true },
-      { cx: 96, cy: 72, big: false },
-      { cx: 130, cy: 80, big: false },
-      { cx: 104, cy: 40, big: false },
-    ].map((p, i) => (
-      <g key={i}>
-        {p.big && <circle cx={p.cx} cy={p.cy} r="13" fill="rgba(31,156,216,0.15)" />}
-        <circle
-          cx={p.cx}
-          cy={p.cy}
-          r={p.big ? 7 : 5}
-          fill={p.big ? "#0E4AAD" : "#1F9CD8"}
-          stroke="white"
-          strokeWidth="2"
-        />
-      </g>
-    ))}
-    <line x1="96" y1="72" x2="118" y2="55" stroke="#1F9CD8" strokeWidth="1" strokeDasharray="3 3" />
-    <line x1="130" y1="80" x2="118" y2="55" stroke="#1F9CD8" strokeWidth="1" strokeDasharray="3 3" />
-    <line x1="104" y1="40" x2="118" y2="55" stroke="#1F9CD8" strokeWidth="1" strokeDasharray="3 3" />
-    <rect x="58" y="10" width="104" height="22" rx="6" fill="#0E4AAD" />
-    <text x="110" y="25" textAnchor="middle" fill="white" fontSize="11" fontFamily="Montserrat" fontWeight="700">
-      Cobertura nacional
-    </text>
-  </svg>
-);
+  useEffect(() => {
+    injectGlowCSS();
+    const move = (e: PointerEvent) => {
+      if (!ref.current) return;
+      ref.current.style.setProperty("--gx", e.clientX.toFixed(1));
+      ref.current.style.setProperty("--gxp", (e.clientX / window.innerWidth).toFixed(4));
+      ref.current.style.setProperty("--gy", e.clientY.toFixed(1));
+      ref.current.style.backgroundImage = `radial-gradient(
+        180px 180px at ${e.clientX}px ${e.clientY}px,
+        hsl(${205 + (e.clientX / window.innerWidth) * 22} 80% 58% / 0.09),
+        transparent
+      )`;
+    };
+    document.addEventListener("pointermove", move);
+    return () => document.removeEventListener("pointermove", move);
+  }, []);
 
-/* ─── Ilustração: 48h assistência ─── */
-const Illus48h = () => (
-  <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="20" y="14" width="180" height="102" rx="14" fill="#EBF5FC" />
-    <rect x="76" y="22" width="48" height="82" rx="10" fill="white" stroke="#DAEEF9" strokeWidth="1.5" />
-    <rect x="89" y="12" width="5" height="16" rx="2.5" fill="#0E4AAD" />
-    <rect x="82" y="30" width="36" height="22" rx="5" fill="#EBF5FC" />
-    <text x="100" y="45" textAnchor="middle" fill="#0E4AAD" fontSize="11" fontFamily="Montserrat" fontWeight="700">
-      48h
-    </text>
-    <circle cx="92" cy="64" r="4" fill="#EBF5FC" stroke="#DAEEF9" strokeWidth="1" />
-    <circle cx="100" cy="64" r="4" fill="#0E4AAD" />
-    <circle cx="108" cy="64" r="4" fill="#EBF5FC" stroke="#DAEEF9" strokeWidth="1" />
-    <path d="M140 38 L130 58 L138 58 L126 84 L150 54 L140 54 Z" fill="#1F9CD8" opacity="0.9" />
-    <path d="M56 45 L48 62 L55 62 L44 84 L63 60 L55 60 Z" fill="#0E4AAD" opacity="0.5" />
-  </svg>
-);
+  return (
+    <div
+      ref={ref}
+      className="ideal-stat-glow relative flex flex-col justify-between rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1"
+      style={{
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(31,156,216,0.18)",
+        backdropFilter: "blur(14px)",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.25)",
+        minHeight: 148,
+        backgroundAttachment: "fixed",
+        backgroundPosition: "50% 50%",
+      }}
+    >
+      <div style={{ color: "#1F9CD8", opacity: 0.7 }}>{icon}</div>
+      <div className="mt-6 space-y-0.5">
+        <div className="text-3xl md:text-4xl leading-none text-white" style={ms700}>
+          {value}
+        </div>
+        <div className="text-xs leading-snug" style={{ ...ms400, color: "rgba(200,233,248,0.50)" }}>
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-/* ─── Ilustração: Wings+ Hytera — medalha ─── */
-const IllusWings = () => (
-  <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="40" y="10" width="140" height="110" rx="14" fill="#EBF5FC" />
-    <circle cx="110" cy="65" r="34" fill="white" stroke="#DAEEF9" strokeWidth="2" />
-    <circle cx="110" cy="65" r="26" fill="#0E4AAD" />
-    <path d="M110 44 L114 57 L128 57 L117 65 L121 79 L110 71 L99 79 L103 65 L92 57 L106 57 Z" fill="#1F9CD8" />
-    <rect x="103" y="10" width="14" height="30" rx="3" fill="#1F9CD8" />
-    <rect x="56" y="106" width="108" height="22" rx="6" fill="#0E4AAD" />
-    <text x="110" y="121" textAnchor="middle" fill="white" fontSize="11" fontFamily="Montserrat" fontWeight="700">
-      Wings+ Hytera
-    </text>
-  </svg>
-);
-
-const cards = [
+const stats = [
   {
-    illus: <Illus18Anos />,
-    title: "18 anos de mercado",
-    desc: "Experiência consolidada em radiocomunicação profissional atendendo grandes operações em todo o Brasil.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+    value: "18+",
+    label: "anos no mercado",
   },
   {
-    illus: <Illus200Empresas />,
-    title: "200+ empresas atendidas",
-    desc: "Indústrias, shoppings, hospitais e eventos de todos os portes confiam na Ideal.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        <line x1="12" y1="12" x2="12" y2="16" />
+        <line x1="10" y1="14" x2="14" y2="14" />
+      </svg>
+    ),
+    value: "200+",
+    label: "empresas atendidas",
   },
   {
-    illus: <IllusCobertura />,
-    title: "Cobertura nacional",
-    desc: "Entregamos e prestamos suporte em todo o Brasil, com logística própria e parceiros regionais.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+    value: "100%",
+    label: "cobertura nacional",
   },
   {
-    illus: <Illus48h />,
-    title: "Assistência em até 48h",
-    desc: "Laboratório próprio, técnicos certificados e peças originais para resolver rápido.",
-  },
-  {
-    illus: <IllusWings />,
-    title: "Certificação Wings+ Hytera",
-    desc: "Dealer autorizado com o mais alto nível de certificação Hytera na América Latina.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+    value: "48h",
+    label: "suporte técnico garantido",
   },
 ];
 
-const glassStyle: React.CSSProperties = {
-  borderColor: "rgba(31,156,216,0.22)",
-  boxShadow:
-    "0 2px 16px rgba(14,74,173,0.07), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(31,156,216,0.08)",
-  background: "linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,250,254,0.95) 100%)",
-};
+const WingsCard = () => {
+  const ref = React.useRef<HTMLDivElement>(null);
 
-const FeatureCard = ({ card }: { card: (typeof cards)[0] }) => (
-  <div
-    className="rounded-2xl border bg-white overflow-hidden flex flex-col h-full transition-all duration-300 hover:-translate-y-1"
-    style={{ ...glassStyle }}
-  >
+  React.useEffect(() => {
+    injectGlowCSS();
+    const move = (e: PointerEvent) => {
+      if (!ref.current) return;
+      ref.current.style.setProperty("--gx", e.clientX.toFixed(1));
+      ref.current.style.setProperty("--gxp", (e.clientX / window.innerWidth).toFixed(4));
+      ref.current.style.setProperty("--gy", e.clientY.toFixed(1));
+      ref.current.style.backgroundImage = `radial-gradient(
+        180px 180px at ${e.clientX}px ${e.clientY}px,
+        hsl(${205 + (e.clientX / window.innerWidth) * 22} 80% 58% / 0.13),
+        transparent
+      )`;
+    };
+    document.addEventListener("pointermove", move);
+    return () => document.removeEventListener("pointermove", move);
+  }, []);
+
+  return (
     <div
-      className="w-full flex items-center justify-center overflow-hidden"
-      style={{ height: 150, background: "linear-gradient(160deg, #f0f8ff 0%, #e8f4fc 100%)" }}
-    >
-      {card.illus}
-    </div>
-    <div className="p-5 space-y-1.5">
-      <h3 className="text-base text-gray-900" style={ms700}>
-        {card.title}
-      </h3>
-      <p className="text-sm leading-relaxed text-gray-500" style={ms400}>
-        {card.desc}
-      </p>
-    </div>
-  </div>
-);
-
-/* Card largo — layout horizontal com ilustração à esquerda */
-const FeatureCardWide = ({ card }: { card: (typeof cards)[0] }) => (
-  <div
-    className="rounded-2xl border overflow-hidden flex flex-row h-full transition-all duration-300 hover:-translate-y-1"
-    style={{
-      ...glassStyle,
-      position: "relative",
-    }}
-  >
-    {/* detalhe de canto tecnológico */}
-    <span
+      ref={ref}
+      className="ideal-stat-glow relative flex flex-col justify-between rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1"
       style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: 48,
-        height: 48,
-        borderRight: "2px solid rgba(31,156,216,0.30)",
-        borderBottom: "2px solid rgba(31,156,216,0.30)",
-        borderBottomRightRadius: 12,
-        pointerEvents: "none",
-      }}
-    />
-    <span
-      style={{
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        width: 48,
-        height: 48,
-        borderLeft: "2px solid rgba(31,156,216,0.30)",
-        borderTop: "2px solid rgba(31,156,216,0.30)",
-        borderTopLeftRadius: 12,
-        pointerEvents: "none",
-      }}
-    />
-
-    {/* ilustração — lado esquerdo */}
-    <div
-      className="flex-shrink-0 flex items-center justify-center"
-      style={{
-        width: 220,
-        background: "linear-gradient(160deg, #f0f8ff 0%, #e8f4fc 100%)",
-        borderRight: "1px solid rgba(31,156,216,0.12)",
+        background: "rgba(14,74,173,0.18)",
+        border: "1px solid rgba(31,156,216,0.28)",
+        backdropFilter: "blur(14px)",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 24px rgba(0,0,0,0.25)",
+        minHeight: 148,
+        backgroundAttachment: "fixed",
+        backgroundPosition: "50% 50%",
       }}
     >
-      <div style={{ width: 200, height: 140 }}>{card.illus}</div>
-    </div>
+      {/* ícone topo — mesmo padrão do StatCard */}
+      <div style={{ color: "#1F9CD8", opacity: 0.85 }}>
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="8" r="6" />
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+        </svg>
+      </div>
 
-    {/* texto — lado direito */}
-    <div className="flex flex-col justify-center p-7 space-y-2">
-      {/* badge tecnológico */}
-      <span
-        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] px-3 py-1 rounded-full self-start"
-        style={{
-          ...ms500,
-          color: "#1F9CD8",
-          background: "rgba(31,156,216,0.08)",
-          border: "1px solid rgba(31,156,216,0.22)",
-        }}
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#1F9CD8] animate-pulse inline-block" />
-        Certificação oficial
-      </span>
-      <h3 className="text-xl text-gray-900 leading-snug" style={ms700}>
-        {card.title}
-      </h3>
-      <p className="text-sm leading-relaxed text-gray-500" style={ms400}>
-        {card.desc}
-      </p>
-      {/* linha decorativa */}
-      <div className="pt-3 flex items-center gap-2">
-        <div style={{ height: 2, width: 32, background: "linear-gradient(90deg,#0E4AAD,#1F9CD8)", borderRadius: 2 }} />
-        <span className="text-xs text-gray-400" style={ms400}>
-          Hytera Wings+ Partner
-        </span>
+      {/* texto embaixo — mesmo padrão do StatCard */}
+      <div className="mt-6 space-y-0.5">
+        <div className="text-3xl md:text-4xl leading-none text-white" style={ms700}>
+          Wings+
+        </div>
+        <div className="text-xs leading-snug" style={{ ...ms400, color: "rgba(200,233,248,0.50)" }}>
+          Hytera Partner — cert. internacional
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const CredenciaisSection = () => (
   <section className="relative z-10 -mt-8">
-    <div className="bg-white rounded-t-3xl pt-14 pb-10">
-      <div className="container mx-auto px-4">
-        <p className="text-xs uppercase tracking-[3px] text-center mb-2" style={{ ...ms500, color: "#1F9CD8" }}>
-          Por que a Ideal
-        </p>
-        <h2 className="text-2xl md:text-3xl text-center text-gray-900 mb-10" style={ms700}>
-          Números que provam nossa <span style={{ color: "#0E4AAD" }}>autoridade</span>
-        </h2>
+    <div className="rounded-t-3xl overflow-hidden relative" style={{ minHeight: 300 }}>
+      {/* fundo escuro nas mesmas cores do hero/carrossel */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(135deg, #071535 0%, #0a2255 50%, #071535 100%)" }}
+      />
 
-        {/* linha 1 — 3 cards */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {cards.slice(0, 3).map((card, i) => (
-              <FeatureCard key={i} card={card} />
-            ))}
+      {/* spotlight inferior — mesma paleta dos outros componentes */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          bottom: "-15%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 700,
+          height: 400,
+          background:
+            "radial-gradient(ellipse 55% 50% at 50% 90%, rgba(31,156,216,0.20) 0%, rgba(14,74,173,0.08) 45%, transparent 70%)",
+          filter: "blur(10px)",
+        }}
+      />
+      {/* orb esquerda */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "5%",
+          left: "-8%",
+          width: 360,
+          height: 360,
+          background: "radial-gradient(circle, rgba(14,74,173,0.16) 0%, transparent 65%)",
+          filter: "blur(60px)",
+        }}
+      />
+      {/* orb direita */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "0%",
+          right: "-5%",
+          width: 300,
+          height: 300,
+          background: "radial-gradient(circle, rgba(31,156,216,0.11) 0%, transparent 65%)",
+          filter: "blur(60px)",
+        }}
+      />
+
+      {/* conteúdo */}
+      <div className="relative z-10 container mx-auto px-6 py-16 md:py-20 space-y-8">
+        {/* Linha 1: badge + headline */}
+        <div className="space-y-4">
+          <span
+            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[3px] px-3 py-1.5 rounded-full"
+            style={{
+              ...ms600,
+              color: "#7ec8ef",
+              background: "rgba(31,156,216,0.10)",
+              border: "1px solid rgba(31,156,216,0.22)",
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#1F9CD8" }} />
+            Resultados reais
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white" style={ms700}>
+            Comunicação{" "}
+            <span
+              style={{
+                backgroundImage: "linear-gradient(90deg, #5bc8ef, #ffffff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              que não falha.
+            </span>
+          </h2>
+        </div>
+
+        {/* Linha 2: 3 colunas — col1: 18+ e 100% | col2: 200+ e Wings+ | col3: 48h */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* Coluna 1: 18+ em cima, 100% embaixo */}
+          <div className="flex flex-col gap-3">
+            <StatCard {...stats[0]} />
+            <StatCard {...stats[2]} />
           </div>
-          {/* linha 2 — card 48h + Wings+ lado a lado, Wings+ mais largo */}
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
-            <div className="sm:col-span-2">
-              <FeatureCard card={cards[3]} />
-            </div>
-            <div className="sm:col-span-3">
-              <FeatureCardWide card={cards[4]} />
-            </div>
+
+          {/* Coluna 2: 200+ em cima, Wings+ embaixo */}
+          <div className="flex flex-col gap-3">
+            <StatCard {...stats[1]} />
+            <WingsCard />
+          </div>
+
+          {/* Coluna 3: 48h em cima, espaço vazio ou extra embaixo */}
+          <div className="flex flex-col gap-3">
+            <StatCard {...stats[3]} />
           </div>
         </div>
       </div>
+
+      {/* linha inferior glow */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(31,156,216,0.35) 30%, rgba(31,156,216,0.35) 70%, transparent 100%)",
+        }}
+      />
     </div>
   </section>
 );
