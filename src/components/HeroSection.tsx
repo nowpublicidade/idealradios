@@ -157,9 +157,9 @@ const HeroSection = () => {
           {/* Rádios flutuantes */}
           <div className="relative hidden lg:flex justify-center items-center min-h-[500px]">
             <img
-              src="/assets/hero-radios-hytera.png"
+              src="/assets/hero-radios.png"
               alt="Rádios Hytera profissionais"
-              className="w-[420px] animate-float"
+              className="w-[420px] animate-float mx-[80px] text-xl font-serif object-cover"
               style={{ filter: "drop-shadow(0 16px 48px rgba(31,156,216,0.55))" }}
             />
 
