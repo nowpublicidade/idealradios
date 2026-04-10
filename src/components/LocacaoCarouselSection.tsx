@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { GripHorizontal } from "lucide-react";
+import { asset } from "@/lib/assets";
 
 const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms4 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
@@ -10,34 +11,34 @@ const ms6 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
 const locacaoRadios = [
   {
     name: "HP786",
-    img: "/assets/radios/imgi_6_HP786-680x680.png",
+    img: asset("/assets/radios/imgi_6_HP786-680x680.png"),
     tag: "DMR",
     desc: "Display colorido, GPS, Bluetooth 5.0",
   },
-  { name: "HP706", img: "/assets/radios/imgi_7_HP706-680x680.png", tag: "DMR", desc: "IP68, Criptografia AES-256" },
+  { name: "HP706", img: asset("/assets/radios/imgi_7_HP706-680x680.png"), tag: "DMR", desc: "IP68, Criptografia AES-256" },
   {
     name: "HP686",
-    img: "/assets/radios/imgi_8_HP686-680x680.png",
+    img: asset("/assets/radios/imgi_8_HP686-680x680.png"),
     tag: "DMR",
     desc: "Compacto, áudio HD, longa bateria",
   },
   {
     name: "HP606",
-    img: "/assets/radios/imgi_9_HP606-680x680.png",
+    img: asset("/assets/radios/imgi_9_HP606-680x680.png"),
     tag: "DMR",
     desc: "IP67, robusto, entrada simplificada",
   },
   {
     name: "HP506",
-    img: "/assets/radios/imgi_10_HP506-7-680x680.png",
+    img: asset("/assets/radios/imgi_10_HP506-7-680x680.png"),
     tag: "DMR",
     desc: "Ultra compacto, ideal para eventos",
   },
-  { name: "PT890", img: "/assets/radios/imgi_4_PT890-680x680.png", tag: "DMR", desc: "Tela grande, GPS + BeiDou" },
-  { name: "PT590", img: "/assets/radios/imgi_5_PT590-680x680.png", tag: "DMR", desc: "Design slim, MIL-STD-810" },
+  { name: "PT890", img: asset("/assets/radios/imgi_4_PT890-680x680.png"), tag: "DMR", desc: "Tela grande, GPS + BeiDou" },
+  { name: "PT590", img: asset("/assets/radios/imgi_5_PT590-680x680.png"), tag: "DMR", desc: "Design slim, MIL-STD-810" },
   {
     name: "PNC-380",
-    img: "/assets/radios/imgi_12_PNC-380-3.png",
+    img: asset("/assets/radios/imgi_12_PNC-380-3.png"),
     tag: "PoC 4G",
     desc: "Push-to-talk via rede celular",
   },

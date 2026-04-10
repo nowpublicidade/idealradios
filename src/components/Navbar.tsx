@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { asset } from "@/lib/assets";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms600 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
@@ -44,7 +45,7 @@ const Navbar = () => {
           {/* Logo — aumentada de h-8 para h-11 */}
           <a href="#" className="flex items-center gap-2 shrink-0">
             <img
-              src="/assets/logo-branca.png"
+              src={asset("/assets/logo-branca.png")}
               alt="Ideal Rádios"
               className="h-11 transition-all duration-300"
               style={{ filter: scrolled ? "invert(1) hue-rotate(195deg) brightness(0.35)" : "none" }}

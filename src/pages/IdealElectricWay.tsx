@@ -31,6 +31,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
 import Footer from "@/components/Footer";
+import { asset } from "@/lib/assets";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms600 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
@@ -43,7 +44,7 @@ const products = [
   {
     name: "IEW-D70",
     subtitle: "Diciclo Elétrico Corporativo",
-    img: "/assets/iew/imgi_25_D70-1024x1024.jpeg",
+    img: asset("/assets/iew/imgi_25_D70-1024x1024.jpeg"),
     desc: "Solução ágil para ambientes internos e controlados. Mobilidade prática em shoppings, fábricas, galpões, centros logísticos, aeroportos e hospitais.",
     modal: {
       tagline: "Mobilidade indoor de alta precisão",
@@ -63,7 +64,7 @@ const products = [
   {
     name: "IEW-D90",
     subtitle: "Diciclo Elétrico Outdoor",
-    img: "/assets/iew/imgi_24_D90.jpeg",
+    img: asset("/assets/iew/imgi_24_D90.jpeg"),
     desc: "Mobilidade elétrica para áreas externas e amplas. Ideal para estacionamentos, condomínios corporativos, parques industriais, áreas portuárias e orlas.",
     modal: {
       tagline: "Robustez para ambientes externos",
@@ -83,7 +84,7 @@ const products = [
   {
     name: "IEW-M1O",
     subtitle: "Moto Elétrica 10.000W",
-    img: "/assets/iew/imgi_29_M1O-1024x1024.jpeg",
+    img: asset("/assets/iew/imgi_29_M1O-1024x1024.jpeg"),
     desc: "Alta autonomia para deslocamentos mais longos. Perfeita para grandes centros corporativos, campi universitários, shoppings e centros logísticos.",
     modal: {
       tagline: "Performance elétrica para grandes operações",
@@ -103,7 +104,7 @@ const products = [
   {
     name: "IEW-C30",
     subtitle: "Cadeira de Rodas Motorizada",
-    img: "/assets/iew/imgi_3_Site-Mirage-SX-01-730x730-1-600x600-1.jpeg",
+    img: asset("/assets/iew/imgi_3_Site-Mirage-SX-01-730x730-1-600x600-1.jpeg"),
     desc: "Experiência mais confortável e inclusiva para clientes e visitantes em shoppings, hospitais, parques, aeroportos e centros corporativos.",
     modal: {
       tagline: "Inclusão e conforto em cada trajeto",
@@ -721,7 +722,7 @@ const IdealElectricWay = () => {
                   }}
                 >
                   <img
-                    src="/assets/iew/9bca4a6d-6c88-4ffc-9491-0c58444885ae.png"
+                    src={asset("/assets/iew/9bca4a6d-6c88-4ffc-9491-0c58444885ae.png")}
                     alt="Frota Ideal Electric Way"
                     className="w-full h-full object-cover"
                   />

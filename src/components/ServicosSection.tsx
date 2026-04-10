@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { asset } from "@/lib/assets";
 
 const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms4 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
@@ -147,7 +148,7 @@ const ServicosSection = () => {
             ctaLabel="Solicitar assistência técnica agora"
             ctaVariant="solid"
             note="Diagnóstico sem compromisso · Peça original garantida"
-            imgSrc="/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg"
+            imgSrc={asset("/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg")}
             imgAlt="Assistência técnica Ideal Rádios"
             badgeLabel="48h de atendimento"
             reverse={false}
@@ -171,7 +172,7 @@ const ServicosSection = () => {
             ctaLabel="Quero entender como migrar para digital"
             ctaVariant="outline"
             note="Consultoria gratuita · Sem compromisso"
-            imgSrc="/assets/radios/imgi_19_ideal-radios-servicos-especializados-600x400.jpeg"
+            imgSrc={asset("/assets/radios/imgi_19_ideal-radios-servicos-especializados-600x400.jpeg")}
             imgAlt="Sistemas DMR e TETRA"
             badgeLabel="Consultoria gratuita"
             reverse={true}
