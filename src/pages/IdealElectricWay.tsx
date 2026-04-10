@@ -803,7 +803,7 @@ const IdealElectricWay = () => {
               </div>
             </SectionReveal>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
               {products.map((p, i) => (
                 <SectionReveal key={p.name} animation="fade-up" delay={0.1 + i * 0.08}>
                   <div
