@@ -358,7 +358,7 @@ const IdealElectricWay = () => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/assets/iew/imgi_7_IMG_7356-1024x576.jpeg')",
+            backgroundImage: "url('/assets/iew/hero-iew.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
