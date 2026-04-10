@@ -26,7 +26,9 @@ import {
   Globe,
   MessageSquare,
   Building2,
+  CheckCircle2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
