@@ -4,24 +4,95 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+/* ─── Hytera — paths confirmados do zip ─── */
 const hyteraRadios = [
-  { name: "HP786", img: "/assets/radios/imgi_6_HP786-680x680.png", tag: "DMR Portátil", features: ["Display colorido", "GPS integrado", "Bluetooth 5.0"] },
-  { name: "HP706", img: "/assets/radios/imgi_7_HP706-680x680.png", tag: "DMR Portátil", features: ["Display LCD", "IP68", "Criptografia AES-256"] },
-  { name: "HP686", img: "/assets/radios/imgi_8_HP686-680x680.png", tag: "DMR Portátil", features: ["Compacto", "Áudio HD", "Longa duração de bateria"] },
-  { name: "HP606", img: "/assets/radios/imgi_9_HP606-680x680.png", tag: "DMR Portátil", features: ["Entrada simplificada", "IP67", "Robusto"] },
-  { name: "HP506", img: "/assets/radios/imgi_10_HP506-7-680x680.png", tag: "DMR Portátil", features: ["Ultra compacto", "Leve", "Ideal para eventos"] },
-  { name: "PT890", img: "/assets/radios/imgi_4_PT890-680x680.png", tag: "DMR Portátil", features: ["Tela grande", "GPS + BeiDou", "Comunicação full-duplex"] },
-  { name: "PT590", img: "/assets/radios/imgi_5_PT590-680x680.png", tag: "DMR Portátil", features: ["Design slim", "MIL-STD-810", "Cancelamento de ruído"] },
-  { name: "HP716EX", img: "/assets/radios/imgi_2_HP716EX-680x680.png", tag: "ATEX / IECEx", features: ["Antiexplosão", "Zona 1/21", "Certificação ATEX"] },
-  { name: "HP796ex", img: "/assets/radios/imgi_3_HP796ex-680x680.png", tag: "ATEX / IECEx", features: ["Intrinsecamente seguro", "Display colorido", "GPS"] },
+  {
+    name: "HP786",
+    img: "/assets/radios/imgi_6_HP786-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Display colorido", "GPS integrado", "Bluetooth 5.0"],
+  },
+  {
+    name: "HP706",
+    img: "/assets/radios/imgi_7_HP706-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Display LCD", "IP68", "Criptografia AES-256"],
+  },
+  {
+    name: "HP686",
+    img: "/assets/radios/imgi_8_HP686-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Compacto", "Áudio HD", "Longa duração de bateria"],
+  },
+  {
+    name: "HP606",
+    img: "/assets/radios/imgi_9_HP606-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Entrada simplificada", "IP67", "Robusto"],
+  },
+  {
+    name: "HP506",
+    img: "/assets/radios/imgi_10_HP506-7-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Ultra compacto", "Leve", "Ideal para eventos"],
+  },
+  {
+    name: "PT890",
+    img: "/assets/radios/imgi_4_PT890-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Tela grande", "GPS + BeiDou", "Comunicação full-duplex"],
+  },
+  {
+    name: "PT590",
+    img: "/assets/radios/imgi_5_PT590-680x680.png",
+    tag: "DMR Portátil",
+    features: ["Design slim", "MIL-STD-810", "Cancelamento de ruído"],
+  },
+  {
+    name: "HP716EX",
+    img: "/assets/radios/imgi_2_HP716EX-680x680.png",
+    tag: "ATEX / IECEx",
+    features: ["Antiexplosão", "Zona 1/21", "Certificação ATEX"],
+  },
+  {
+    name: "HP796ex",
+    img: "/assets/radios/imgi_3_HP796ex-680x680.png",
+    tag: "ATEX / IECEx",
+    features: ["Intrinsecamente seguro", "Display colorido", "GPS"],
+  },
 ];
 
+/* ─── Motorola — modelos e paths do zip ─── */
 const motorolaRadios = [
   {
-    name: "Série DGP",
-    img: "/assets/radios/imgi_87_cq5dam.web_.1280.1280-25-680x453.jpeg",
+    name: "R7",
+    img: "/assets/radios/imgi_6_motorola-r7-680x680.png",
     tag: "DMR Portátil",
-    features: ["MOTOTRBO", "IP68", "GPS integrado"],
+    features: ["Display colorido", "Bluetooth + Wi-Fi", "IP68 / MIL-STD"],
+  },
+  {
+    name: "R2",
+    img: "/assets/radios/imgi_5_motorola-r2-680x680.png",
+    tag: "Analógico / Digital",
+    features: ["Compacto e robusto", "16 canais", "Longa bateria"],
+  },
+  {
+    name: "DEP 250 / C",
+    img: "/assets/radios/imgi_2_dep250_1.png",
+    tag: "Analógico",
+    features: ["Entrada simplificada", "Alta durabilidade", "Operação simples"],
+  },
+  {
+    name: "DGP 8050EX",
+    img: "/assets/radios/imgi_10_radio-dgp8050ex-dgp8550ex-motorola.jpeg",
+    tag: "ATEX / IECEx",
+    features: ["Antiexplosão", "GPS integrado", "DMR Tier II/III"],
+  },
+  {
+    name: "DEP 450",
+    img: "/assets/radios/imgi_13_radio-dep450-motorola-1.jpeg",
+    tag: "DMR Portátil",
+    features: ["MOTOTRBO", "IP54", "Áudio potente"],
   },
 ];
 
@@ -38,7 +109,6 @@ const RadioCard = ({ radio, brand }: { radio: (typeof hyteraRadios)[0]; brand: B
     transition={{ duration: 0.28 }}
     className="flex-1 min-w-0 rounded-2xl overflow-hidden border border-gray-200 hover:border-[#0E4AAD]/40 hover:shadow-xl hover:shadow-[#0E4AAD]/10 transition-all duration-300 bg-white group"
   >
-    {/* Fundo branco explícito para PNGs com fundo branco */}
     <div className="bg-white p-6 flex items-center justify-center h-52 border-b border-gray-100">
       <img
         src={radio.img}
@@ -116,7 +186,7 @@ const RadiosCarouselSection = () => {
             </p>
           </div>
 
-          {/* Abas Hytera / Motorola */}
+          {/* Abas */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex rounded-full p-1 bg-gray-100 border border-gray-200">
               {(["hytera", "motorola"] as Brand[]).map((brand) => (
@@ -136,7 +206,7 @@ const RadiosCarouselSection = () => {
             </div>
           </div>
 
-          {/* Logo da marca ativa */}
+          {/* Logo da marca */}
           <div className="flex justify-center mb-8 h-8">
             <AnimatePresence mode="wait">
               {activeBrand === "hytera" ? (
@@ -165,7 +235,7 @@ const RadiosCarouselSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* Grid de cards com animação */}
+          {/* Cards */}
           <AnimatePresence mode="wait">
             <motion.div
               key={`${activeBrand}-${page}`}
@@ -178,7 +248,6 @@ const RadiosCarouselSection = () => {
               {currentRadios.map((radio) => (
                 <RadioCard key={radio.name} radio={radio} brand={activeBrand} />
               ))}
-              {/* Espaços para manter grid de 3 colunas */}
               {currentRadios.length < CARDS_PER_PAGE &&
                 Array.from({ length: CARDS_PER_PAGE - currentRadios.length }).map((_, i) => (
                   <div key={`spacer-${i}`} className="flex-1 min-w-0" />
