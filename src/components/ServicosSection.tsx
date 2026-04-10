@@ -171,7 +171,7 @@ const ServicosSection = () => {
             ctaLabel="Quero entender como migrar para digital"
             ctaVariant="outline"
             note="Consultoria gratuita · Sem compromisso"
-            imgSrc="/assets/radios/imgi_19_ideal-radios-servicos-especializados-600x400.jpeg"
+            imgSrc="f2defd73-33b5-40b1-8fa6-392dc44a3ca5.png"
             imgAlt="Sistemas DMR e TETRA"
             badgeLabel="Consultoria gratuita"
             reverse={true}
