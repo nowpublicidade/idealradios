@@ -1,11 +1,33 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  Leaf, Battery, DollarSign, Wrench, Car, Headphones,
-  ShoppingBag, Plane, Factory, Anchor, Stethoscope,
-  TreePine, Calendar, GraduationCap, Settings,
-  Phone, ChevronRight, Quote, ArrowLeft,
-  Menu, X, Zap, Mail, Globe, MessageSquare, User, Building2
+  Leaf,
+  Battery,
+  DollarSign,
+  Wrench,
+  Car,
+  Headphones,
+  ShoppingBag,
+  Plane,
+  Factory,
+  Anchor,
+  Stethoscope,
+  TreePine,
+  Calendar,
+  GraduationCap,
+  Settings,
+  Phone,
+  ChevronRight,
+  Quote,
+  ArrowLeft,
+  Menu,
+  X,
+  Zap,
+  Mail,
+  Globe,
+  MessageSquare,
+  User,
+  Building2,
 } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 
@@ -44,12 +66,36 @@ const products = [
 ];
 
 const advantages = [
-  { icon: Leaf, label: "Zero Emissão", desc: "Operação 100% limpa, sem emissões de CO₂ ou ruído excessivo. Contribua para um planeta mais sustentável." },
-  { icon: Battery, label: "Autonomia Elevada", desc: "Baterias de alta capacidade para jornadas completas de trabalho sem interrupções." },
-  { icon: DollarSign, label: "Baixo Custo Operacional", desc: "Economia de até 90% em combustível e manutenção comparado a veículos convencionais." },
-  { icon: Wrench, label: "Manutenção Preventiva", desc: "Plano de manutenção programada incluído na locação, sem surpresas no orçamento." },
-  { icon: Car, label: "Frota Reserva", desc: "Veículo substituto imediato em caso de manutenção corretiva. Zero downtime." },
-  { icon: Headphones, label: "Assistência Nacional", desc: "Equipe técnica própria com cobertura em todo o território nacional." },
+  {
+    icon: Leaf,
+    label: "Zero Emissão",
+    desc: "Operação 100% limpa, sem emissões de CO₂ ou ruído excessivo. Contribua para um planeta mais sustentável.",
+  },
+  {
+    icon: Battery,
+    label: "Autonomia Elevada",
+    desc: "Baterias de alta capacidade para jornadas completas de trabalho sem interrupções.",
+  },
+  {
+    icon: DollarSign,
+    label: "Baixo Custo Operacional",
+    desc: "Economia de até 90% em combustível e manutenção comparado a veículos convencionais.",
+  },
+  {
+    icon: Wrench,
+    label: "Manutenção Preventiva",
+    desc: "Plano de manutenção programada incluído na locação, sem surpresas no orçamento.",
+  },
+  {
+    icon: Car,
+    label: "Frota Reserva",
+    desc: "Veículo substituto imediato em caso de manutenção corretiva. Zero downtime.",
+  },
+  {
+    icon: Headphones,
+    label: "Assistência Nacional",
+    desc: "Equipe técnica própria com cobertura em todo o território nacional.",
+  },
 ];
 
 const sectors = [
@@ -67,17 +113,34 @@ const sectors = [
 
 const timelineSteps = [
   { num: 1, title: "Contato Inicial", desc: "Fale com nosso time comercial e apresente sua operação.", icon: Phone },
-  { num: 2, title: "Análise de Necessidades", desc: "Avaliamos o cenário da sua empresa e propomos a solução ideal.", icon: MessageSquare },
+  {
+    num: 2,
+    title: "Análise de Necessidades",
+    desc: "Avaliamos o cenário da sua empresa e propomos a solução ideal.",
+    icon: MessageSquare,
+  },
   { num: 3, title: "Demonstração em Campo", desc: "Teste os veículos diretamente na sua operação.", icon: Zap },
-  { num: 4, title: "Proposta Personalizada", desc: "Receba um plano de locação sob medida para sua demanda.", icon: DollarSign },
-  { num: 5, title: "Implantação e Treinamento", desc: "Entrega da frota com treinamento operacional completo.", icon: Car },
-  { num: 6, title: "Suporte Contínuo", desc: "Manutenção preventiva, assistência técnica e frota reserva garantida.", icon: Headphones },
+  {
+    num: 4,
+    title: "Proposta Personalizada",
+    desc: "Receba um plano de locação sob medida para sua demanda.",
+    icon: DollarSign,
+  },
+  {
+    num: 5,
+    title: "Implantação e Treinamento",
+    desc: "Entrega da frota com treinamento operacional completo.",
+    icon: Car,
+  },
+  {
+    num: 6,
+    title: "Suporte Contínuo",
+    desc: "Manutenção preventiva, assistência técnica e frota reserva garantida.",
+    icon: Headphones,
+  },
 ];
 
-const segmentos = [
-  "Shopping Center", "Indústria", "Aeroporto", "Hospital",
-  "Condomínio Logístico", "Evento", "Outro",
-];
+const segmentos = ["Shopping Center", "Indústria", "Aeroporto", "Hospital", "Condomínio Logístico", "Evento", "Outro"];
 
 /* ─── NAVBAR IEW ─── */
 const navLinksIEW = [
@@ -268,7 +331,12 @@ const FlipCard = ({ icon: Icon, label, desc }: { icon: any; label: string; desc:
 /* ─── PAGE ─── */
 const IdealElectricWay = () => {
   const [formData, setFormData] = useState({
-    nome: "", empresa: "", email: "", telefone: "", segmento: "", mensagem: "",
+    nome: "",
+    empresa: "",
+    email: "",
+    telefone: "",
+    segmento: "",
+    mensagem: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -315,10 +383,7 @@ const IdealElectricWay = () => {
             </span>
           </SectionReveal>
           <SectionReveal animation="fade-up" delay={0.2}>
-            <h1
-              className="text-4xl md:text-6xl lg:text-7xl text-white mb-6 max-w-4xl leading-tight"
-              style={bc700}
-            >
+            <h1 className="text-4xl md:text-6xl lg:text-7xl text-white mb-6 max-w-4xl leading-tight" style={bc700}>
               Ideal{" "}
               <span
                 style={{
@@ -364,47 +429,139 @@ const IdealElectricWay = () => {
       {/* ── 2. SOBRE A IEW ── */}
       <section className="relative z-10">
         <div
-          className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
-          style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%)" }}
+          className="rounded-t-3xl -mt-8 relative overflow-hidden"
+          style={{ background: "linear-gradient(160deg, #eef5ff 0%, #ffffff 60%, #f0f7ff 100%)" }}
         >
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-              <SectionReveal animation="fade-left" delay={0.1}>
-                <div>
-                  <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
-                    Quem somos
-                  </span>
-                  <h2 className="text-3xl md:text-4xl mb-6" style={{ ...ms700, color: "#0b2760" }}>
+          {/* Decorative background circles */}
+          <div
+            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(32,114,185,0.06) 0%, transparent 70%)",
+              transform: "translate(20%, -20%)",
+            }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(14,74,173,0.05) 0%, transparent 70%)",
+              transform: "translate(-20%, 20%)",
+            }}
+          />
+
+          {/* Top text block */}
+          <div className="container mx-auto px-4 pt-20 pb-10 relative z-10">
+            <SectionReveal animation="fade-up" delay={0.1}>
+              <div className="max-w-5xl mx-auto">
+                <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
+                  Quem somos
+                </span>
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                  <h2 className="text-3xl md:text-5xl leading-tight" style={{ ...ms700, color: "#0b2760" }}>
                     Uma evolução natural da{" "}
-                    <span style={{ color: "#0E4AAD" }}>Ideal Rádios</span>
+                    <span
+                      style={{
+                        backgroundImage: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
+                      Ideal Rádios
+                    </span>
                   </h2>
-                  <p className="text-base leading-relaxed mb-6" style={{ ...ms400, color: "#3a5a80" }}>
+                  <div className="shrink-0">
+                    <div
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm"
+                      style={{
+                        ...ms600,
+                        background: "linear-gradient(135deg, rgba(14,74,173,0.10), rgba(31,156,216,0.10))",
+                        color: "#0E4AAD",
+                        border: "1px solid rgba(14,74,173,0.18)",
+                      }}
+                    >
+                      <Zap size={14} />
+                      Locação corporativa exclusiva
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+
+          {/* Image + text two-column block */}
+          <div className="container mx-auto px-4 pb-20 relative z-10">
+            <div className="max-w-5xl mx-auto grid md:grid-cols-5 gap-8 items-center">
+              {/* Image — takes 3 cols, tall and prominent */}
+              <SectionReveal animation="fade-right" delay={0.15} className="md:col-span-3">
+                <div
+                  className="relative rounded-3xl overflow-hidden"
+                  style={{
+                    boxShadow: "0 24px 80px rgba(14,74,173,0.18), 0 4px 20px rgba(0,0,0,0.08)",
+                    aspectRatio: "4/3",
+                  }}
+                >
+                  <img
+                    src="/assets/iew/imgi_15_logo-iew-768x768.jpeg"
+                    alt="Frota Ideal Electric Way"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Subtle gradient overlay at bottom */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to top, rgba(11,39,96,0.30) 0%, transparent 55%)",
+                    }}
+                  />
+                  {/* Badge over the image */}
+                  <div
+                    className="absolute bottom-5 left-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-sm"
+                    style={{
+                      background: "rgba(255,255,255,0.18)",
+                      border: "1px solid rgba(255,255,255,0.30)",
+                    }}
+                  >
+                    <Zap size={13} style={{ color: "#1F9CD8" }} />
+                    <span className="text-white text-xs" style={ms600}>
+                      100% Elétrico
+                    </span>
+                  </div>
+                </div>
+              </SectionReveal>
+
+              {/* Text — takes 2 cols */}
+              <SectionReveal animation="fade-left" delay={0.25} className="md:col-span-2">
+                <div className="flex flex-col gap-6">
+                  <p className="text-base leading-relaxed" style={{ ...ms400, color: "#3a5a80" }}>
                     A Ideal Electric Way nasceu da necessidade real das operações dos nossos clientes. Eles já confiavam
                     na Ideal para garantir comunicação eficiente — agora levamos essa mesma filosofia de confiabilidade,
                     suporte técnico próprio e continuidade operacional para a mobilidade corporativa.
                   </p>
-                  <div
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm"
-                    style={{
-                      ...ms600,
-                      background: "rgba(14,74,173,0.08)",
-                      color: "#0E4AAD",
-                      border: "1px solid rgba(14,74,173,0.15)",
-                    }}
-                  >
-                    <Zap size={14} />
-                    Modelo exclusivo de locação corporativa
+                  <p className="text-base leading-relaxed" style={{ ...ms400, color: "#3a5a80" }}>
+                    Funcionamos exclusivamente no modelo de{" "}
+                    <strong style={{ ...ms600, color: "#0E4AAD" }}>locação corporativa</strong>, incluindo assistência
+                    técnica nacional, manutenção preventiva, frota reserva e atendimento especializado.
+                  </p>
+
+                  {/* Three pillars */}
+                  <div className="flex flex-col gap-3 mt-2">
+                    {[
+                      { icon: Wrench, label: "Manutenção preventiva inclusa" },
+                      { icon: Car, label: "Frota reserva garantida" },
+                      { icon: Headphones, label: "Assistência técnica nacional" },
+                    ].map(({ icon: Icon, label }) => (
+                      <div key={label} className="flex items-center gap-3">
+                        <div
+                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                          style={{ background: "rgba(14,74,173,0.08)" }}
+                        >
+                          <Icon size={15} style={{ color: "#0E4AAD" }} />
+                        </div>
+                        <span className="text-sm" style={{ ...ms500, color: "#0b2760" }}>
+                          {label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              </SectionReveal>
-              <SectionReveal animation="fade-right" delay={0.2}>
-                <div className="flex justify-center">
-                  <img
-                    src="/assets/iew/imgi_15_logo-iew-768x768.jpeg"
-                    alt="Logo Ideal Electric Way"
-                    className="w-64 h-64 md:w-80 md:h-80 rounded-3xl object-contain shadow-xl"
-                    style={{ background: "white" }}
-                  />
                 </div>
               </SectionReveal>
             </div>
@@ -492,8 +649,7 @@ const IdealElectricWay = () => {
                   Diferenciais
                 </span>
                 <h2 className="text-3xl md:text-4xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
-                  Por que escolher a{" "}
-                  <span style={{ color: "#0E4AAD" }}>IEW</span>?
+                  Por que escolher a <span style={{ color: "#0E4AAD" }}>IEW</span>?
                 </h2>
               </div>
             </SectionReveal>
@@ -590,10 +746,12 @@ const IdealElectricWay = () => {
                 const isLeft = i % 2 === 0;
                 return (
                   <SectionReveal key={step.num} animation="fade-up" delay={0.1 + i * 0.1}>
-                    <div className={`relative flex items-start mb-12 last:mb-0 ${
-                      /* Mobile: always right. Desktop: alternate */
-                      "md:justify-" + (isLeft ? "start" : "end")
-                    }`}>
+                    <div
+                      className={`relative flex items-start mb-12 last:mb-0 ${
+                        /* Mobile: always right. Desktop: alternate */
+                        "md:justify-" + (isLeft ? "start" : "end")
+                      }`}
+                    >
                       {/* Dot */}
                       <div
                         className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10"
@@ -656,7 +814,10 @@ const IdealElectricWay = () => {
                 {/* Barra lateral decorativa + citação */}
                 <div className="flex-1">
                   <div className="flex gap-5">
-                    <div className="w-1 rounded-full shrink-0" style={{ background: "linear-gradient(to bottom, #0E4AAD, #1F9CD8)" }} />
+                    <div
+                      className="w-1 rounded-full shrink-0"
+                      style={{ background: "linear-gradient(to bottom, #0E4AAD, #1F9CD8)" }}
+                    />
                     <div>
                       <Quote size={32} style={{ color: "rgba(31,156,216,0.4)" }} className="mb-4" />
                       <blockquote
@@ -664,8 +825,8 @@ const IdealElectricWay = () => {
                         style={{ ...ms400, fontSize: "1.25rem" }}
                       >
                         "A Ideal Electric Way nasce para complementar o que já fazemos com excelência. Nossos clientes
-                        precisam de agilidade, alcance e eficiência. A IEW entrega exatamente isso, com tecnologia limpa e a
-                        robustez que o mercado corporativo exige."
+                        precisam de agilidade, alcance e eficiência. A IEW entrega exatamente isso, com tecnologia limpa
+                        e a robustez que o mercado corporativo exige."
                       </blockquote>
                       <div className="flex items-center gap-4">
                         {/* Placeholder foto circular */}
@@ -695,10 +856,7 @@ const IdealElectricWay = () => {
 
       {/* ── 8. CONTATO — Lead capture ── */}
       <section id="contato" className="relative z-[70]">
-        <div
-          className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
-          style={{ background: "#F8FAFC" }}
-        >
+        <div className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden" style={{ background: "#F8FAFC" }}>
           <div className="container mx-auto px-4 relative z-10">
             <SectionReveal animation="fade-up" delay={0.1}>
               <div className="text-center mb-14">
@@ -721,7 +879,12 @@ const IdealElectricWay = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <input
-                      type="text" name="nome" placeholder="Nome *" required value={formData.nome} onChange={handleChange}
+                      type="text"
+                      name="nome"
+                      placeholder="Nome *"
+                      required
+                      value={formData.nome}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
                       style={{
                         ...ms400,
@@ -729,51 +892,100 @@ const IdealElectricWay = () => {
                         border: "1px solid rgba(14,74,173,0.12)",
                         color: "#0b2760",
                       }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                      onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                     />
                     <input
-                      type="text" name="empresa" placeholder="Empresa" value={formData.empresa} onChange={handleChange}
+                      type="text"
+                      name="empresa"
+                      placeholder="Empresa"
+                      value={formData.empresa}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-                      style={{ ...ms400, background: "white", border: "1px solid rgba(14,74,173,0.12)", color: "#0b2760" }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                      onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                      style={{
+                        ...ms400,
+                        background: "white",
+                        border: "1px solid rgba(14,74,173,0.12)",
+                        color: "#0b2760",
+                      }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                     />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <input
-                      type="email" name="email" placeholder="E-mail *" required value={formData.email} onChange={handleChange}
+                      type="email"
+                      name="email"
+                      placeholder="E-mail *"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-                      style={{ ...ms400, background: "white", border: "1px solid rgba(14,74,173,0.12)", color: "#0b2760" }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                      onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                      style={{
+                        ...ms400,
+                        background: "white",
+                        border: "1px solid rgba(14,74,173,0.12)",
+                        color: "#0b2760",
+                      }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                     />
                     <input
-                      type="tel" name="telefone" placeholder="Telefone / WhatsApp *" required value={formData.telefone} onChange={handleChange}
+                      type="tel"
+                      name="telefone"
+                      placeholder="Telefone / WhatsApp *"
+                      required
+                      value={formData.telefone}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-                      style={{ ...ms400, background: "white", border: "1px solid rgba(14,74,173,0.12)", color: "#0b2760" }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                      onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                      style={{
+                        ...ms400,
+                        background: "white",
+                        border: "1px solid rgba(14,74,173,0.12)",
+                        color: "#0b2760",
+                      }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                     />
                   </div>
                   <select
-                    name="segmento" value={formData.segmento} onChange={handleChange}
+                    name="segmento"
+                    value={formData.segmento}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-                    style={{ ...ms400, background: "white", border: "1px solid rgba(14,74,173,0.12)", color: formData.segmento ? "#0b2760" : "#9ca3af" }}
-                    onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                    onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                    style={{
+                      ...ms400,
+                      background: "white",
+                      border: "1px solid rgba(14,74,173,0.12)",
+                      color: formData.segmento ? "#0b2760" : "#9ca3af",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                   >
-                    <option value="" disabled>Segmento</option>
+                    <option value="" disabled>
+                      Segmento
+                    </option>
                     {segmentos.map((s) => (
-                      <option key={s} value={s}>{s}</option>
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
                     ))}
                   </select>
                   <textarea
-                    name="mensagem" placeholder="Mensagem (opcional)" rows={4} value={formData.mensagem} onChange={handleChange}
+                    name="mensagem"
+                    placeholder="Mensagem (opcional)"
+                    rows={4}
+                    value={formData.mensagem}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200 resize-none"
-                    style={{ ...ms400, background: "white", border: "1px solid rgba(14,74,173,0.12)", color: "#0b2760" }}
-                    onFocus={(e) => e.currentTarget.style.borderColor = "#0E4AAD"}
-                    onBlur={(e) => e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)"}
+                    style={{
+                      ...ms400,
+                      background: "white",
+                      border: "1px solid rgba(14,74,173,0.12)",
+                      color: "#0b2760",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#0E4AAD")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(14,74,173,0.12)")}
                   />
                   <button
                     type="submit"
@@ -819,8 +1031,12 @@ const IdealElectricWay = () => {
                       <Phone size={18} style={{ color: "#0E4AAD" }} />
                     </div>
                     <div>
-                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>Telefone / WhatsApp</p>
-                      <p className="text-sm group-hover:underline" style={{ ...ms600, color: "#0b2760" }}>(11) 2752-2520</p>
+                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>
+                        Telefone / WhatsApp
+                      </p>
+                      <p className="text-sm group-hover:underline" style={{ ...ms600, color: "#0b2760" }}>
+                        (11) 2752-2520
+                      </p>
                     </div>
                   </a>
 
@@ -832,8 +1048,12 @@ const IdealElectricWay = () => {
                       <Mail size={18} style={{ color: "#0E4AAD" }} />
                     </div>
                     <div>
-                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>E-mail</p>
-                      <p className="text-sm" style={{ ...ms600, color: "#0b2760" }}>contato@idealeletricway.com.br</p>
+                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>
+                        E-mail
+                      </p>
+                      <p className="text-sm" style={{ ...ms600, color: "#0b2760" }}>
+                        contato@idealeletricway.com.br
+                      </p>
                     </div>
                   </div>
 
@@ -850,8 +1070,12 @@ const IdealElectricWay = () => {
                       <Globe size={18} style={{ color: "#0E4AAD" }} />
                     </div>
                     <div>
-                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>Site</p>
-                      <p className="text-sm group-hover:underline" style={{ ...ms600, color: "#0b2760" }}>www.idealeletricway.com.br</p>
+                      <p className="text-xs" style={{ ...ms500, color: "#5a7a9a" }}>
+                        Site
+                      </p>
+                      <p className="text-sm group-hover:underline" style={{ ...ms600, color: "#0b2760" }}>
+                        www.idealeletricway.com.br
+                      </p>
                     </div>
                   </a>
                 </div>
