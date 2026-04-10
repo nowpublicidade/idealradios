@@ -545,6 +545,7 @@ const IdealElectricWay = () => {
     mensagem: "",
   });
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -552,8 +553,12 @@ const IdealElectricWay = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Visual only for now
-    alert("Formulário enviado com sucesso! Entraremos em contato em breve.");
+    setShowSuccess(true);
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+    setFormData({ nome: "", empresa: "", email: "", telefone: "", segmento: "", mensagem: "" });
   };
 
   return (
