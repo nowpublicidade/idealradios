@@ -501,7 +501,7 @@ const IdealElectricWay = () => {
                   }}
                 >
                   <img
-                    src="/assets/iew/imgi_15_logo-iew-768x768.jpeg"
+                    src="/assets/iew/9bca4a6d-6c88-4ffc-9491-0c58444885ae.png"
                     alt="Frota Ideal Electric Way"
                     className="w-full h-full object-cover"
                   />
