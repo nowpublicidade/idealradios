@@ -42,24 +42,80 @@ const products = [
     subtitle: "Diciclo Elétrico Corporativo",
     img: "/assets/iew/imgi_25_D70-1024x1024.jpeg",
     desc: "Solução ágil para ambientes internos e controlados. Mobilidade prática em shoppings, fábricas, galpões, centros logísticos, aeroportos e hospitais.",
+    modal: {
+      tagline: "Mobilidade indoor de alta precisão",
+      about:
+        "O IEW-D70 foi desenvolvido para operações em ambientes internos onde agilidade e controle são essenciais. Seu porte compacto e raio de giro reduzido permitem navegação fluida em corredores, galpões e espaços com fluxo de pessoas.",
+      specs: [
+        { label: "Velocidade máx.", value: "20 km/h" },
+        { label: "Autonomia", value: "até 35 km" },
+        { label: "Carga máx.", value: "120 kg" },
+        { label: "Peso do veículo", value: "52 kg" },
+        { label: "Tempo de carga", value: "4–6 horas" },
+        { label: "Motor", value: "700 W (hub motor)" },
+      ],
+      ideal: ["Shoppings e galerias", "Fábricas e galpões", "Centros logísticos", "Aeroportos e hospitais"],
+    },
   },
   {
     name: "IEW-D90",
     subtitle: "Diciclo Elétrico Outdoor",
     img: "/assets/iew/imgi_24_D90.jpeg",
     desc: "Mobilidade elétrica para áreas externas e amplas. Ideal para estacionamentos, condomínios corporativos, parques industriais, áreas portuárias e orlas.",
+    modal: {
+      tagline: "Robustez para ambientes externos",
+      about:
+        "O IEW-D90 foi projetado para operar em superfícies irregulares e áreas externas exigentes. Com pneus off-road de maior aderência e maior capacidade de bateria, garante autonomia e segurança mesmo em terrenos desafiadores.",
+      specs: [
+        { label: "Velocidade máx.", value: "25 km/h" },
+        { label: "Autonomia", value: "até 50 km" },
+        { label: "Carga máx.", value: "130 kg" },
+        { label: "Peso do veículo", value: "65 kg" },
+        { label: "Tempo de carga", value: "5–7 horas" },
+        { label: "Motor", value: "900 W (hub motor)" },
+      ],
+      ideal: ["Estacionamentos e pátios", "Parques industriais", "Áreas portuárias", "Condomínios corporativos"],
+    },
   },
   {
     name: "IEW-M1O",
     subtitle: "Moto Elétrica 10.000W",
     img: "/assets/iew/imgi_29_M1O-1024x1024.jpeg",
     desc: "Alta autonomia para deslocamentos mais longos. Perfeita para grandes centros corporativos, campi universitários, shoppings e centros logísticos.",
+    modal: {
+      tagline: "Performance elétrica para grandes operações",
+      about:
+        "A IEW-M1O entrega potência real para operações que exigem velocidade e alcance. Com motor de 10.000W e bateria de alta densidade, é a solução para patrulhamento, entregas internas e deslocamentos de longa distância em grandes estruturas.",
+      specs: [
+        { label: "Velocidade máx.", value: "80 km/h" },
+        { label: "Autonomia", value: "até 120 km" },
+        { label: "Carga máx.", value: "150 kg" },
+        { label: "Peso do veículo", value: "110 kg" },
+        { label: "Tempo de carga", value: "6–8 horas" },
+        { label: "Motor", value: "10.000 W" },
+      ],
+      ideal: ["Campi universitários", "Grandes centros corporativos", "Patrulhamento e segurança", "Logística interna"],
+    },
   },
   {
     name: "IEW-C30",
     subtitle: "Cadeira de Rodas Motorizada",
     img: "/assets/iew/imgi_3_Site-Mirage-SX-01-730x730-1-600x600-1.jpeg",
     desc: "Experiência mais confortável e inclusiva para clientes e visitantes em shoppings, hospitais, parques, aeroportos e centros corporativos.",
+    modal: {
+      tagline: "Inclusão e conforto em cada trajeto",
+      about:
+        "A IEW-C30 transforma a experiência de mobilidade para pessoas com dificuldade de locomoção. Silenciosa, estável e de fácil operação, proporciona autonomia e dignidade para clientes, pacientes e visitantes em qualquer ambiente corporativo.",
+      specs: [
+        { label: "Velocidade máx.", value: "6 km/h" },
+        { label: "Autonomia", value: "até 20 km" },
+        { label: "Carga máx.", value: "160 kg" },
+        { label: "Peso do veículo", value: "95 kg" },
+        { label: "Tempo de carga", value: "8 horas" },
+        { label: "Motor", value: "2 × 250 W" },
+      ],
+      ideal: ["Shoppings e centros comerciais", "Hospitais e clínicas", "Parques temáticos", "Aeroportos"],
+    },
   },
 ];
 
@@ -139,6 +195,173 @@ const timelineSteps = [
 ];
 
 const segmentos = ["Shopping Center", "Indústria", "Aeroporto", "Hospital", "Condomínio Logístico", "Evento", "Outro"];
+
+/* ─── PRODUCT MODAL ─── */
+type Product = (typeof products)[0];
+
+const ProductModal = ({ product, onClose }: { product: Product; onClose: () => void }) => {
+  // Close on Escape
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  // Prevent body scroll
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  const m = product.modal;
+
+  return (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      style={{ background: "rgba(6,14,36,0.75)", backdropFilter: "blur(8px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl"
+        style={{
+          background: "white",
+          boxShadow: "0 40px 120px rgba(0,0,0,0.35), 0 8px 32px rgba(14,74,173,0.15)",
+          animation: "modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <style>{`
+          @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.92) translateY(16px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+          }
+        `}</style>
+
+        {/* Image header */}
+        <div
+          className="relative h-56 flex items-center justify-center overflow-hidden rounded-t-3xl"
+          style={{ background: "linear-gradient(135deg, #f0f7ff 0%, #e8f1ff 100%)" }}
+        >
+          <img
+            src={product.img}
+            alt={product.name}
+            className="h-44 w-auto object-contain"
+            style={{ filter: "drop-shadow(0 8px 24px rgba(14,74,173,0.18))" }}
+          />
+          {/* Blue gradient strip at bottom of image */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+            style={{ background: "linear-gradient(to top, rgba(240,247,255,1), transparent)" }}
+          />
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+            style={{ background: "rgba(14,74,173,0.10)", color: "#0E4AAD" }}
+          >
+            <X size={18} />
+          </button>
+          {/* Model badge */}
+          <div
+            className="absolute top-4 left-4 px-3 py-1.5 rounded-xl text-xs"
+            style={{
+              ...ms700,
+              background: "linear-gradient(135deg, #0E4AAD, #1F9CD8)",
+              color: "white",
+              letterSpacing: "0.1em",
+            }}
+          >
+            {product.name}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-8 flex flex-col gap-7">
+          {/* Title + tagline */}
+          <div>
+            <h2 className="text-2xl mb-1" style={{ ...ms700, color: "#0b2760" }}>
+              {product.subtitle}
+            </h2>
+            <p className="text-sm" style={{ ...ms500, color: "#1F9CD8" }}>
+              {m.tagline}
+            </p>
+          </div>
+
+          {/* About */}
+          <p className="text-sm leading-relaxed" style={{ ...ms400, color: "#3a5a80" }}>
+            {m.about}
+          </p>
+
+          {/* Specs grid */}
+          <div>
+            <p className="text-xs uppercase tracking-[3px] mb-4" style={{ ...ms700, color: "#2072B9" }}>
+              Especificações
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {m.specs.map((spec) => (
+                <div
+                  key={spec.label}
+                  className="rounded-2xl p-4 flex flex-col gap-1"
+                  style={{
+                    background: "linear-gradient(135deg, #f0f7ff, #e8f1ff)",
+                    border: "1px solid rgba(14,74,173,0.08)",
+                  }}
+                >
+                  <span className="text-xs" style={{ ...ms500, color: "#7a9abf" }}>
+                    {spec.label}
+                  </span>
+                  <span className="text-base" style={{ ...ms700, color: "#0b2760" }}>
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Ideal para */}
+          <div>
+            <p className="text-xs uppercase tracking-[3px] mb-4" style={{ ...ms700, color: "#2072B9" }}>
+              Ideal para
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {m.ideal.map((item) => (
+                <span
+                  key={item}
+                  className="text-xs px-3 py-1.5 rounded-full"
+                  style={{
+                    ...ms500,
+                    background: "rgba(14,74,173,0.07)",
+                    color: "#0E4AAD",
+                    border: "1px solid rgba(14,74,173,0.14)",
+                  }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <a
+            href="#contato"
+            onClick={onClose}
+            className="inline-flex items-center justify-center gap-2 text-white rounded-2xl px-6 py-3.5 text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+            style={{
+              ...ms700,
+              background: "linear-gradient(135deg, #0E4AAD, #2072B9)",
+              boxShadow: "0 8px 24px rgba(14,74,173,0.30)",
+            }}
+          >
+            Solicitar demonstração do {product.name}
+            <ChevronRight size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /* ─── NAVBAR IEW ─── */
 const navLinksIEW = [
@@ -321,6 +544,7 @@ const IdealElectricWay = () => {
     segmento: "",
     mensagem: "",
   });
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -335,6 +559,7 @@ const IdealElectricWay = () => {
   return (
     <div className="min-h-screen" style={{ background: "#060e24" }}>
       <NavbarIEW />
+      {selectedProduct && <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
 
       {/* ── 1. HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -588,6 +813,7 @@ const IdealElectricWay = () => {
                       boxShadow: "0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
                       border: "1px solid rgba(255,255,255,0.9)",
                     }}
+                    onClick={() => setSelectedProduct(p)}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget as HTMLDivElement;
                       el.style.transform = "translateY(-6px)";
@@ -632,6 +858,14 @@ const IdealElectricWay = () => {
                       <p className="text-xs leading-relaxed flex-1" style={{ ...ms400, color: "#5a7a9a" }}>
                         {p.desc}
                       </p>
+                      {/* Ver detalhes */}
+                      <div
+                        className="mt-4 flex items-center gap-1 text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 group-hover:translate-x-0"
+                        style={{ ...ms600, color: "#0E4AAD" }}
+                      >
+                        Ver detalhes
+                        <ChevronRight size={13} />
+                      </div>
                     </div>
                   </div>
                 </SectionReveal>
