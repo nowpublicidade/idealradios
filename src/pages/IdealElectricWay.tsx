@@ -741,7 +741,7 @@ const IdealElectricWay = () => {
                 <div className="flex flex-col gap-6">
                   <p className="text-base leading-relaxed" style={{ ...ms400, color: "#3a5a80" }}>
                     A Ideal Electric Way nasceu da necessidade real das operações dos nossos clientes. Eles já confiavam
-                    na Ideal para garantir comunicação eficiente — agora levamos essa mesma filosofia de confiabilidade,
+                    na Ideal para garantir comunicação eficiente. Agora levamos essa mesma filosofia de confiabilidade,
                     suporte técnico próprio e continuidade operacional para a mobilidade corporativa.
                   </p>
                   <p className="text-base leading-relaxed" style={{ ...ms400, color: "#3a5a80" }}>
@@ -902,7 +902,7 @@ const IdealElectricWay = () => {
                       Por que escolher a <span style={{ color: "#0E4AAD" }}>IEW</span>?
                     </h2>
                     <p className="text-sm max-w-xs text-right hidden md:block" style={{ ...ms400, color: "#7a9abf" }}>
-                      Mais do que veículos — uma solução completa de mobilidade corporativa.
+                      Mais do que veículos, uma solução completa de mobilidade corporativa.
                     </p>
                   </div>
                 </div>
@@ -1151,7 +1151,7 @@ const IdealElectricWay = () => {
                   style={{ ...ms400, fontStyle: "italic" }}
                 >
                   "A Ideal Electric Way nasce para complementar o que já fazemos com excelência. Nossos clientes
-                  precisam de agilidade, alcance e eficiência — a IEW entrega exatamente isso."
+                  precisam de agilidade, alcance e eficiência. A IEW entrega exatamente isso."
                 </blockquote>
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-base text-white" style={ms700}>
@@ -1413,7 +1413,7 @@ const IdealElectricWay = () => {
       >
         <div className="container mx-auto px-4 text-center">
           <p className="text-xs" style={{ ...ms400, color: "rgba(200,233,248,0.30)" }}>
-            © {new Date().getFullYear()} Ideal Electric Way — Uma divisão da Ideal Rádios do Brasil. Todos os direitos
+            © {new Date().getFullYear()} Ideal Electric Way | Uma divisão da Ideal Rádios do Brasil. Todos os direitos
             reservados.
           </p>
         </div>
