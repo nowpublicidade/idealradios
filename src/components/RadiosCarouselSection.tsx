@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -97,7 +98,8 @@ const motorolaRadios = [
 ];
 
 type Brand = "hytera" | "motorola";
-const CARDS_PER_PAGE = 3;
+const CARDS_PER_PAGE_DESKTOP = 3;
+const CARDS_PER_PAGE_MOBILE = 1;
 const ms = { fontFamily: "'Montserrat', sans-serif" };
 
 const RadioCard = ({ radio, brand }: { radio: (typeof hyteraRadios)[0]; brand: Brand }) => (
@@ -156,12 +158,15 @@ const RadioCard = ({ radio, brand }: { radio: (typeof hyteraRadios)[0]; brand: B
 );
 
 const RadiosCarouselSection = () => {
+  const isMobile = useIsMobile();
   const [activeBrand, setActiveBrand] = useState<Brand>("hytera");
   const [page, setPage] = useState(0);
 
+  const cardsPerPage = isMobile ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_DESKTOP;
   const radios = activeBrand === "hytera" ? hyteraRadios : motorolaRadios;
-  const totalPages = Math.ceil(radios.length / CARDS_PER_PAGE);
-  const currentRadios = radios.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
+  const totalPages = Math.ceil(radios.length / cardsPerPage);
+  const clampedPage = Math.min(page, totalPages - 1);
+  const currentRadios = radios.slice(clampedPage * cardsPerPage, clampedPage * cardsPerPage + cardsPerPage);
 
   const handleBrandChange = (brand: Brand) => {
     setActiveBrand(brand);
@@ -238,8 +243,8 @@ const RadiosCarouselSection = () => {
           {/* Cards */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${activeBrand}-${page}`}
-              className="flex gap-6"
+              key={`${activeBrand}-${clampedPage}`}
+              className="flex flex-col md:flex-row gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -248,8 +253,8 @@ const RadiosCarouselSection = () => {
               {currentRadios.map((radio) => (
                 <RadioCard key={radio.name} radio={radio} brand={activeBrand} />
               ))}
-              {currentRadios.length < CARDS_PER_PAGE &&
-                Array.from({ length: CARDS_PER_PAGE - currentRadios.length }).map((_, i) => (
+              {currentRadios.length < cardsPerPage &&
+                Array.from({ length: cardsPerPage - currentRadios.length }).map((_, i) => (
                   <div key={`spacer-${i}`} className="flex-1 min-w-0" />
                 ))}
             </motion.div>
@@ -260,7 +265,7 @@ const RadiosCarouselSection = () => {
             <div className="flex items-center justify-center gap-4 mt-10">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
-                disabled={page === 0}
+                disabled={clampedPage === 0}
                 className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0E4AAD] hover:bg-[#EBF2FF] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronLeft size={18} />
@@ -271,14 +276,14 @@ const RadiosCarouselSection = () => {
                     key={i}
                     onClick={() => setPage(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      i === page ? "bg-[#0E4AAD] w-6" : "bg-gray-300 hover:bg-gray-400 w-2"
+                      i === clampedPage ? "bg-[#0E4AAD] w-6" : "bg-gray-300 hover:bg-gray-400 w-2"
                     }`}
                   />
                 ))}
               </div>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-                disabled={page === totalPages - 1}
+                disabled={clampedPage === totalPages - 1}
                 className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0E4AAD] hover:bg-[#EBF2FF] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronRight size={18} />

@@ -114,7 +114,7 @@ const LocacaoCarouselSection = () => {
           />
 
           <motion.div
-            className="flex gap-4 px-8"
+            className="flex gap-3 sm:gap-4 px-4 sm:px-8"
             drag="x"
             dragConstraints={containerRef}
             onDragStart={() => setDragged(true)}
@@ -123,7 +123,7 @@ const LocacaoCarouselSection = () => {
             {locacaoRadios.map((radio) => (
               <div
                 key={radio.name}
-                className="w-[260px] flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 group"
+                className="w-[200px] sm:w-[260px] flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 group"
                 style={{
                   background: "#ffffff",
                   boxShadow: "0 4px 28px rgba(14,74,173,0.18)",
