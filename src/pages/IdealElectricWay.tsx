@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
+import Footer from "@/components/Footer";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms600 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
@@ -1414,17 +1415,7 @@ const IdealElectricWay = () => {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer
-        className="relative z-[80] py-8"
-        style={{ background: "#060e24", borderTop: "1px solid rgba(14,74,173,0.15)" }}
-      >
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-xs" style={{ ...ms400, color: "rgba(200,233,248,0.30)" }}>
-            © {new Date().getFullYear()} Ideal Electric Way | Uma divisão da Ideal Rádios do Brasil. Todos os direitos
-            reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Success Modal */}
       <AnimatePresence>
