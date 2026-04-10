@@ -9,65 +9,38 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
       style={{ background: "#0a2a5e" }}
     >
-      {/* ── Fundo blur animado – camadas de luz azul ── */}
+      {/* ── Gradiente de fundo ── */}
       <div
         className="absolute inset-0"
         style={{
           background:
             "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(31,156,216,0.28) 0%, transparent 60%)," +
             "radial-gradient(ellipse 60% 50% at 75% 70%, rgba(32,114,185,0.22) 0%, transparent 55%)," +
-            "radial-gradient(ellipse 50% 40% at 50% 10%, rgba(100,190,240,0.18) 0%, transparent 50%)," +
             "linear-gradient(160deg, #0d3578 0%, #0a2255 50%, #071a45 100%)",
         }}
       />
 
-      {/* ── Orb 1 – azul claro, topo esquerda ── */}
+      {/* ── Orbs ── */}
       <div
-        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full animate-float-orb"
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full animate-float-orb pointer-events-none"
         style={{
           background: "radial-gradient(circle, rgba(31,156,216,0.35) 0%, transparent 65%)",
           filter: "blur(80px)",
         }}
       />
-      {/* ── Orb 2 – azul médio, baixo direita ── */}
       <div
-        className="absolute -bottom-40 -right-24 w-[540px] h-[540px] rounded-full animate-float-orb animation-delay-2000"
+        className="absolute -bottom-40 -right-24 w-[540px] h-[540px] rounded-full animate-float-orb animation-delay-2000 pointer-events-none"
         style={{
           background: "radial-gradient(circle, rgba(32,114,185,0.30) 0%, transparent 65%)",
           filter: "blur(90px)",
         }}
       />
-      {/* ── Orb 3 – azul muito claro, centro ── */}
-      <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[380px] h-[380px] rounded-full animate-float-orb animation-delay-1000"
-        style={{
-          background: "radial-gradient(circle, rgba(100,190,240,0.20) 0%, transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* ── Anéis de radar suaves ── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div
-          className="w-[480px] h-[480px] rounded-full border animate-pulse-ring"
-          style={{ borderColor: "rgba(100,190,240,0.15)" }}
-        />
-        <div
-          className="absolute inset-0 rounded-full border animate-pulse-ring animation-delay-1000"
-          style={{ borderColor: "rgba(31,156,216,0.10)" }}
-        />
-        <div
-          className="absolute -inset-[90px] w-[660px] h-[660px] rounded-full border animate-pulse-ring animation-delay-2000"
-          style={{ borderColor: "rgba(32,114,185,0.08)" }}
-        />
-      </div>
 
       {/* ── Conteúdo ── */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Texto */}
           <div className="space-y-8 animate-fade-in-up">
-            {/* Badge */}
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm"
               style={{
@@ -154,30 +127,57 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Rádios flutuantes */}
-          <div className="relative hidden lg:flex justify-center items-center min-h-[500px]">
+          {/* ── Lado direito: radio maior + círculos + badges sobrepostos ── */}
+          <div className="relative hidden lg:flex justify-center items-center min-h-[560px]">
+            {/* Círculos concêntricos centrados no rádio */}
+            {[560, 440, 320, 210].map((size, i) => (
+              <div
+                key={size}
+                className="absolute rounded-full border pointer-events-none"
+                style={{
+                  width: size,
+                  height: size,
+                  borderColor: `rgba(91,200,239,${0.06 + i * 0.02})`,
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  animation: `pulse-ring ${3 + i * 0.8}s ease-in-out infinite`,
+                  animationDelay: `${i * 0.6}s`,
+                }}
+              />
+            ))}
+
+            {/* Rádio principal — maior */}
             <img
               src="/assets/hero-radios.png"
               alt="Rádios Hytera profissionais"
-              className="w-[420px] animate-float mx-[80px] text-xl font-serif object-cover"
-              style={{ filter: "drop-shadow(0 16px 48px rgba(31,156,216,0.55))" }}
+              className="relative z-10 animate-float"
+              style={{
+                width: 500,
+                filter: "drop-shadow(0 20px 60px rgba(31,156,216,0.60))",
+              }}
             />
 
-            {/* Badges */}
+            {/* Badges sobrepostos ao rádio */}
             {[
-              { text: "DMR / TETRA", pos: "top-4 right-4" },
-              { text: "GPS Integrado", pos: "bottom-32 left-2" },
-              { text: "AES-256", pos: "bottom-8 right-8" },
+              { text: "DMR / TETRA", top: "12%", right: "4%" },
+              { text: "GPS Integrado", top: "52%", left: "2%" },
+              { text: "AES-256", bottom: "12%", right: "6%" },
             ].map((badge) => (
               <div
                 key={badge.text}
-                className={`absolute ${badge.pos} px-3 py-1.5 rounded-full border text-xs backdrop-blur-sm`}
+                className="absolute z-20 px-3 py-1.5 rounded-full border text-xs backdrop-blur-sm"
                 style={{
                   ...ms,
                   fontWeight: 600,
-                  background: "rgba(18,99,200,0.45)",
-                  borderColor: "rgba(100,200,245,0.40)",
+                  background: "rgba(18,99,200,0.55)",
+                  borderColor: "rgba(100,200,245,0.45)",
                   color: "#c8e9f8",
+                  top: badge.top,
+                  bottom: badge.bottom,
+                  left: badge.left,
+                  right: badge.right,
+                  boxShadow: "0 4px 16px rgba(14,74,173,0.30)",
                 }}
               >
                 {badge.text}

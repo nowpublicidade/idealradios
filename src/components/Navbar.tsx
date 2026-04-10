@@ -24,7 +24,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ── Floating pill wrapper ── */}
       <div
         className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4"
         style={{ paddingTop: scrolled ? 8 : 16, transition: "padding 0.35s ease" }}
@@ -42,12 +41,12 @@ const Navbar = () => {
             transition: "all 0.35s ease",
           }}
         >
-          {/* Logo */}
+          {/* Logo — aumentada de h-8 para h-11 */}
           <a href="#" className="flex items-center gap-2 shrink-0">
             <img
               src="/assets/logo-branca.png"
               alt="Ideal Rádios"
-              className="h-8 transition-all duration-300"
+              className="h-11 transition-all duration-300"
               style={{ filter: scrolled ? "invert(1) hue-rotate(195deg) brightness(0.35)" : "none" }}
             />
           </a>
@@ -59,13 +58,9 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className="text-sm transition-colors duration-200 relative group"
-                style={{
-                  ...ms600,
-                  color: scrolled ? "#1a3a5c" : "rgba(255,255,255,0.92)",
-                }}
+                style={{ ...ms600, color: scrolled ? "#1a3a5c" : "rgba(255,255,255,0.92)" }}
               >
                 {link.label}
-                {/* underline animado */}
                 <span
                   className="absolute -bottom-0.5 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full"
                   style={{ background: "linear-gradient(90deg,#0E4AAD,#1F9CD8)" }}
@@ -74,7 +69,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA button */}
+          {/* CTA */}
           <a
             href="#contato"
             className="hidden md:inline-flex items-center gap-2 text-sm text-white rounded-xl px-4 py-2 transition-all duration-200 hover:scale-105 active:scale-95"
@@ -102,7 +97,7 @@ const Navbar = () => {
           </button>
         </nav>
 
-        {/* Mobile menu — abaixo do pill */}
+        {/* Mobile menu */}
         {open && (
           <div
             className="absolute top-full mt-2 left-4 right-4 max-w-5xl mx-auto rounded-2xl px-5 py-5 space-y-3"
@@ -119,11 +114,7 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="block text-sm py-2 border-b last:border-0"
-                style={{
-                  ...ms600,
-                  color: "#1a3a5c",
-                  borderColor: "rgba(14,74,173,0.08)",
-                }}
+                style={{ ...ms600, color: "#1a3a5c", borderColor: "rgba(14,74,173,0.08)" }}
               >
                 {link.label}
               </a>
