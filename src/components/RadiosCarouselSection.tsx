@@ -165,7 +165,8 @@ const RadiosCarouselSection = () => {
   const cardsPerPage = isMobile ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_DESKTOP;
   const radios = activeBrand === "hytera" ? hyteraRadios : motorolaRadios;
   const totalPages = Math.ceil(radios.length / cardsPerPage);
-  const currentRadios = radios.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
+  const clampedPage = Math.min(page, totalPages - 1);
+  const currentRadios = radios.slice(clampedPage * cardsPerPage, clampedPage * cardsPerPage + cardsPerPage);
 
   const handleBrandChange = (brand: Brand) => {
     setActiveBrand(brand);
