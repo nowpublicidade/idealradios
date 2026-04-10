@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SectionReveal, StaggerReveal } from "@/components/SectionReveal";
+import { SectionReveal } from "@/components/SectionReveal";
 import {
   Zap,
   BatteryFull,
@@ -16,7 +16,7 @@ import {
   Anchor,
   Warehouse,
   Cross,
-  Ferris,
+  FerrisWheel,
   CalendarCheck,
   GraduationCap,
   Sparkles,
@@ -24,11 +24,9 @@ import {
   Mail,
   Globe,
   Send,
-  ChevronDown,
   Target,
   Search,
   FileCheck,
-  Handshake,
   Rocket,
   HeartHandshake,
 } from "lucide-react";
