@@ -70,12 +70,12 @@ const Navbar = () => {
             <a
               href="/ideal-eletric-way"
               className="text-sm transition-colors duration-200 relative group flex items-center gap-1"
-              style={{ ...ms600, color: scrolled ? "#16A34A" : "#4ADE80" }}
+              style={{ ...ms600, color: scrolled ? "#1a3a5c" : "rgba(255,255,255,0.95)" }}
             >
-              ⚡ IEW
+              Ideal Electric Way
               <span
                 className="absolute -bottom-0.5 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full"
-                style={{ background: "linear-gradient(90deg,#22C55E,#4ADE80)" }}
+                style={{ background: "linear-gradient(90deg,#0E4AAD,#1F9CD8)" }}
               />
             </a>
           </div>
