@@ -105,11 +105,11 @@ const LocacaoCarouselSection = () => {
         {/* Carrossel */}
         <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef}>
           <div
-            className="absolute left-0 top-0 bottom-0 w-44 z-10 pointer-events-none"
+            className="absolute left-0 top-0 bottom-0 w-44 z-10 pointer-events-none hidden md:block"
             style={{ background: `linear-gradient(to right, ${BG}, transparent)` }}
           />
           <div
-            className="absolute right-0 top-0 bottom-0 w-44 z-10 pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 w-44 z-10 pointer-events-none hidden md:block"
             style={{ background: `linear-gradient(to left, #091e52, transparent)` }}
           />
 
