@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Leaf, Battery, DollarSign, Wrench, Car, Headphones,
-  ShoppingBag, Plane, Factory, Anchor, Building2, Stethoscope,
+  ShoppingBag, Plane, Factory, Anchor, Stethoscope,
   TreePine, Calendar, GraduationCap, Settings,
   Shield, Search, HardHat, Package, Building, Zap,
   Phone, ExternalLink, ChevronRight, Quote, ArrowLeft,
@@ -250,7 +250,7 @@ const IdealElectricWay = () => {
           }}
         />
         <div className="container mx-auto px-4 relative z-10 pt-28 pb-20">
-          <SectionReveal direction="up" delay={0.1}>
+          <SectionReveal animation="fade-up" delay={0.1}>
             <span
               className="inline-flex items-center gap-2 text-xs uppercase tracking-[4px] mb-6"
               style={{ ...ms600, color: "#4ADE80" }}
@@ -259,7 +259,7 @@ const IdealElectricWay = () => {
               Mobilidade Elétrica Corporativa
             </span>
           </SectionReveal>
-          <SectionReveal direction="up" delay={0.2}>
+          <SectionReveal animation="fade-up" delay={0.2}>
             <h1
               className="text-4xl md:text-6xl lg:text-7xl text-white mb-6 max-w-4xl leading-tight"
               style={bc700}
@@ -277,19 +277,19 @@ const IdealElectricWay = () => {
               </span>
             </h1>
           </SectionReveal>
-          <SectionReveal direction="up" delay={0.3}>
+          <SectionReveal animation="fade-up" delay={0.3}>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-4" style={ms500}>
               Mobilidade elétrica corporativa com a confiança de quem é referência em radiocomunicação há 18 anos.
             </p>
           </SectionReveal>
-          <SectionReveal direction="up" delay={0.4}>
+          <SectionReveal animation="fade-up" delay={0.4}>
             <p className="text-sm md:text-base text-white/55 max-w-2xl mb-10" style={ms400}>
               Soluções 100% elétricas para operações de segurança, facilities, logística interna e grandes
               infraestruturas. Locação corporativa com assistência técnica nacional, manutenção preventiva e frota
               reserva.
             </p>
           </SectionReveal>
-          <SectionReveal direction="up" delay={0.5}>
+          <SectionReveal animation="fade-up" delay={0.5}>
             <a
               href="https://wa.me/551127522520"
               target="_blank"
@@ -318,7 +318,7 @@ const IdealElectricWay = () => {
         >
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-              <SectionReveal direction="left" delay={0.1}>
+              <SectionReveal animation="fade-left" delay={0.1}>
                 <div>
                   <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#22C55E" }}>
                     Quem somos
@@ -346,7 +346,7 @@ const IdealElectricWay = () => {
                   </div>
                 </div>
               </SectionReveal>
-              <SectionReveal direction="right" delay={0.2}>
+              <SectionReveal animation="fade-right" delay={0.2}>
                 <div className="flex justify-center">
                   <img
                     src="/assets/iew/imgi_15_logo-iew-768x768.jpeg"
@@ -373,7 +373,7 @@ const IdealElectricWay = () => {
           }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="text-center mb-14">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#4ADE80" }}>
                   Nossa frota
@@ -399,7 +399,7 @@ const IdealElectricWay = () => {
 
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {products.map((p, i) => (
-                <SectionReveal key={p.name} direction="up" delay={0.1 + i * 0.1}>
+                <SectionReveal key={p.name} animation="fade-up" delay={0.1 + i * 0.1}>
                   <div
                     className="rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] group"
                     style={{
@@ -460,7 +460,7 @@ const IdealElectricWay = () => {
           style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #ffffff 50%, #e8f5e9 100%)" }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="text-center mb-14">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#22C55E" }}>
                   Diferenciais
@@ -474,7 +474,7 @@ const IdealElectricWay = () => {
 
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {advantages.map((a, i) => (
-                <SectionReveal key={a.label} direction="up" delay={0.1 + i * 0.08}>
+                <SectionReveal key={a.label} animation="fade-up" delay={0.1 + i * 0.08}>
                   <div
                     className="rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full"
                     style={{
@@ -514,7 +514,7 @@ const IdealElectricWay = () => {
           }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="text-center mb-14">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#4ADE80" }}>
                   Mercados
@@ -527,7 +527,7 @@ const IdealElectricWay = () => {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               {sectors.map((s, i) => (
-                <SectionReveal key={s.label} direction="up" delay={0.05 + i * 0.05}>
+                <SectionReveal key={s.label} animation="fade-up" delay={0.05 + i * 0.05}>
                   <div
                     className="flex flex-col items-center gap-3 py-6 px-3 rounded-2xl transition-all duration-300 hover:scale-105"
                     style={{
@@ -555,7 +555,7 @@ const IdealElectricWay = () => {
           style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #e8f5e9 50%, #f0f7ff 100%)" }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="text-center mb-14">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#22C55E" }}>
                   Como usar
@@ -568,7 +568,7 @@ const IdealElectricWay = () => {
 
             <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {applications.map((a, i) => (
-                <SectionReveal key={a.label} direction="up" delay={0.1 + i * 0.08}>
+                <SectionReveal key={a.label} animation="fade-up" delay={0.1 + i * 0.08}>
                   <div
                     className="flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:shadow-md hover:-translate-y-1"
                     style={{
@@ -608,7 +608,7 @@ const IdealElectricWay = () => {
           }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="max-w-3xl mx-auto text-center">
                 <Quote size={40} style={{ color: "rgba(34,197,94,0.3)" }} className="mx-auto mb-6" />
                 <blockquote
@@ -640,7 +640,7 @@ const IdealElectricWay = () => {
           style={{ background: "linear-gradient(160deg, #e8f5e9 0%, #f0f7ff 50%, #e8f5e9 100%)" }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal direction="up" delay={0.1}>
+            <SectionReveal animation="fade-up" delay={0.1}>
               <div className="max-w-2xl mx-auto text-center">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#22C55E" }}>
                   Contato

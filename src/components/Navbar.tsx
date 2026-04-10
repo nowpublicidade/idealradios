@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Menu, X, Phone } from "lucide-react";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms600 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
