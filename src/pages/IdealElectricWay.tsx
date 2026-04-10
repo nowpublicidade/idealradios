@@ -1352,7 +1352,7 @@ const IdealElectricWay = () => {
                   </h3>
 
                   <a
-                    href="https://wa.me/551127522520"
+                    href="https://wa.me/551127592520"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 transition-colors group"
@@ -1368,7 +1368,7 @@ const IdealElectricWay = () => {
                         Telefone / WhatsApp
                       </p>
                       <p className="text-sm group-hover:underline" style={{ ...ms600, color: "#0b2760" }}>
-                        (11) 2752-2520
+                        (11) 2759-2520
                       </p>
                     </div>
                   </a>
