@@ -40,7 +40,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Texto */}
-          <div className="space-y-8 animate-fade-in-up">
+          <div className="space-y-8 animate-fade-in-up text-center lg:text-left">
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm"
               style={{
@@ -54,7 +54,7 @@ const HeroSection = () => {
               Wings+ Hytera Authorized Dealer
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white" style={ms}>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl leading-tight text-white" style={ms}>
               Sua operação não pode parar por falta de{" "}
               <span
                 style={{

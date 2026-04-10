@@ -316,7 +316,7 @@ const CredenciaisSection = () => (
         </div>
 
         {/* Uma linha só: 4 stats + Wings+ */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           {stats.map((stat, i) => (
             <StatCard key={i} {...stat} />
           ))}
