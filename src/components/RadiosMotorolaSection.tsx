@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { asset } from "@/lib/assets";
 
 const motorolaRadios = [
-  { name: "Série DGP", img: "/assets/radios/imgi_87_cq5dam.web_.1280.1280-25-680x453.jpeg", tag: "DMR Portátil", features: ["MOTOTRBO", "IP68", "GPS integrado"] },
+  { name: "Série DGP", img: asset("/assets/radios/imgi_87_cq5dam.web_.1280.1280-25-680x453.jpeg"), tag: "DMR Portátil", features: ["MOTOTRBO", "IP68", "GPS integrado"] },
 ];
 
 const RadiosMotorolaSection = () => {
@@ -75,7 +76,7 @@ const RadiosMotorolaSection = () => {
           </div>
 
           <div className="flex justify-center mt-8">
-            <img src="/assets/radios/imgi_21_logo-motorola-1.png" alt="Motorola Solutions" className="h-8 opacity-40" />
+            <img src={asset("/assets/radios/imgi_21_logo-motorola-1.png")} alt="Motorola Solutions" className="h-8 opacity-40" />
           </div>
         </div>
       </div>

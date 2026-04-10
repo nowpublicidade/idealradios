@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { asset } from "@/lib/assets";
 
 const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 
@@ -149,7 +150,7 @@ const HeroSection = () => {
 
             {/* Rádio principal — maior */}
             <img
-              src="/assets/hero-radios.png"
+              src={asset("/assets/hero-radios.png")}
               alt="Rádios Hytera profissionais"
               className="relative z-10 animate-float"
               style={{

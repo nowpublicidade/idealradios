@@ -1,16 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { asset } from "@/lib/assets";
 
 const hyteraRadios = [
-  { name: "HP786", img: "/assets/radios/imgi_6_HP786-680x680.png", tag: "DMR Portátil", features: ["Display colorido", "GPS integrado", "Bluetooth 5.0"] },
-  { name: "HP706", img: "/assets/radios/imgi_7_HP706-680x680.png", tag: "DMR Portátil", features: ["Display LCD", "IP68", "Criptografia AES-256"] },
-  { name: "HP686", img: "/assets/radios/imgi_8_HP686-680x680.png", tag: "DMR Portátil", features: ["Compacto", "Áudio HD", "Longa duração de bateria"] },
-  { name: "HP606", img: "/assets/radios/imgi_9_HP606-680x680.png", tag: "DMR Portátil", features: ["Entrada simplificada", "IP67", "Robusto"] },
-  { name: "HP506", img: "/assets/radios/imgi_10_HP506-7-680x680.png", tag: "DMR Portátil", features: ["Ultra compacto", "Leve", "Ideal para eventos"] },
-  { name: "PT890", img: "/assets/radios/imgi_4_PT890-680x680.png", tag: "DMR Portátil", features: ["Tela grande", "GPS + BeiDou", "Comunicação full-duplex"] },
-  { name: "PT590", img: "/assets/radios/imgi_5_PT590-680x680.png", tag: "DMR Portátil", features: ["Design slim", "MIL-STD-810", "Cancelamento de ruído"] },
-  { name: "HP716EX", img: "/assets/radios/imgi_2_HP716EX-680x680.png", tag: "ATEX / IECEx", features: ["Antiexplosão", "Zona 1/21", "Certificação ATEX"] },
-  { name: "HP796ex", img: "/assets/radios/imgi_3_HP796ex-680x680.png", tag: "ATEX / IECEx", features: ["Intrinsecamente seguro", "Display colorido", "GPS"] },
+  { name: "HP786", img: asset("/assets/radios/imgi_6_HP786-680x680.png"), tag: "DMR Portátil", features: ["Display colorido", "GPS integrado", "Bluetooth 5.0"] },
+  { name: "HP706", img: asset("/assets/radios/imgi_7_HP706-680x680.png"), tag: "DMR Portátil", features: ["Display LCD", "IP68", "Criptografia AES-256"] },
+  { name: "HP686", img: asset("/assets/radios/imgi_8_HP686-680x680.png"), tag: "DMR Portátil", features: ["Compacto", "Áudio HD", "Longa duração de bateria"] },
+  { name: "HP606", img: asset("/assets/radios/imgi_9_HP606-680x680.png"), tag: "DMR Portátil", features: ["Entrada simplificada", "IP67", "Robusto"] },
+  { name: "HP506", img: asset("/assets/radios/imgi_10_HP506-7-680x680.png"), tag: "DMR Portátil", features: ["Ultra compacto", "Leve", "Ideal para eventos"] },
+  { name: "PT890", img: asset("/assets/radios/imgi_4_PT890-680x680.png"), tag: "DMR Portátil", features: ["Tela grande", "GPS + BeiDou", "Comunicação full-duplex"] },
+  { name: "PT590", img: asset("/assets/radios/imgi_5_PT590-680x680.png"), tag: "DMR Portátil", features: ["Design slim", "MIL-STD-810", "Cancelamento de ruído"] },
+  { name: "HP716EX", img: asset("/assets/radios/imgi_2_HP716EX-680x680.png"), tag: "ATEX / IECEx", features: ["Antiexplosão", "Zona 1/21", "Certificação ATEX"] },
+  { name: "HP796ex", img: asset("/assets/radios/imgi_3_HP796ex-680x680.png"), tag: "ATEX / IECEx", features: ["Intrinsecamente seguro", "Display colorido", "GPS"] },
 ];
 
 const RadiosHyteraSection = () => {

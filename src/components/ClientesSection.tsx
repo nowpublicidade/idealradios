@@ -1,17 +1,19 @@
+import { asset } from "@/lib/assets";
+
 const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
 const ms4 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
 
 const clientLogos = [
-  { src: "/assets/clientes/imgi_3_logo-apas.jpeg", alt: "APAS" },
-  { src: "/assets/clientes/imgi_5_logo-comgas.jpeg", alt: "Comgás" },
-  { src: "/assets/clientes/imgi_6_logo-sirio-libanes.jpeg", alt: "Sírio-Libanês" },
-  { src: "/assets/clientes/imgi_8_logo-sodexo.jpeg", alt: "Sodexo" },
-  { src: "/assets/clientes/imgi_10_logo-valid.jpeg", alt: "Valid" },
-  { src: "/assets/clientes/imgi_12_logo-votorantim.jpeg", alt: "Votorantim" },
-  { src: "/assets/clientes/imgi_9_logo-temon.jpeg", alt: "Temon" },
-  { src: "/assets/clientes/imgi_11_logo-verzani-1.jpeg", alt: "Verzani" },
-  { src: "/assets/clientes/imgi_4_logo-atrium-shopping-1.jpeg", alt: "Atrium Shopping" },
-  { src: "/assets/clientes/imgi_7_logo-parque-das-bandeiras-shopping.jpeg", alt: "Parque das Bandeiras" },
+  { src: asset("/assets/clientes/imgi_3_logo-apas.jpeg"), alt: "APAS" },
+  { src: asset("/assets/clientes/imgi_5_logo-comgas.jpeg"), alt: "Comgás" },
+  { src: asset("/assets/clientes/imgi_6_logo-sirio-libanes.jpeg"), alt: "Sírio-Libanês" },
+  { src: asset("/assets/clientes/imgi_8_logo-sodexo.jpeg"), alt: "Sodexo" },
+  { src: asset("/assets/clientes/imgi_10_logo-valid.jpeg"), alt: "Valid" },
+  { src: asset("/assets/clientes/imgi_12_logo-votorantim.jpeg"), alt: "Votorantim" },
+  { src: asset("/assets/clientes/imgi_9_logo-temon.jpeg"), alt: "Temon" },
+  { src: asset("/assets/clientes/imgi_11_logo-verzani-1.jpeg"), alt: "Verzani" },
+  { src: asset("/assets/clientes/imgi_4_logo-atrium-shopping-1.jpeg"), alt: "Atrium Shopping" },
+  { src: asset("/assets/clientes/imgi_7_logo-parque-das-bandeiras-shopping.jpeg"), alt: "Parque das Bandeiras" },
 ];
 
 /* duplica para scroll infinito */
