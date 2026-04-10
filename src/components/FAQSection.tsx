@@ -1,9 +1,9 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { GlowCard } from "@/components/GlowCard";
+
+const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
+const ms4 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 400 };
+const ms6 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
 
 const faqs = [
   {
@@ -30,29 +30,32 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="bg-background py-20">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl md:text-4xl font-black text-center text-foreground font-display mb-4">
-          Antes de ir embora, deixa a gente <span className="text-ideal-500">responder</span>.
-        </h2>
-        <p className="text-center text-muted-foreground mb-10">
-          As dúvidas mais comuns de quem chega até aqui.
-        </p>
+        <div className="text-center mb-10">
+          <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms6, color: "#2072B9" }}>
+            Dúvidas frequentes
+          </span>
+          <h2 className="text-3xl md:text-4xl text-gray-900 mb-4" style={ms}>
+            Antes de ir embora, deixa a gente <span style={{ color: "#0E4AAD" }}>responder</span>.
+          </h2>
+          <p className="text-gray-400" style={ms4}>
+            As dúvidas mais comuns de quem chega até aqui.
+          </p>
+        </div>
 
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="border border-ideal-200/50 rounded-xl px-5 data-[state=open]:border-ideal-400/40 data-[state=open]:shadow-lg data-[state=open]:shadow-ideal-500/10 transition-all"
-            >
-              <AccordionTrigger className="text-left font-bold text-foreground hover:no-underline">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
+            <GlowCard key={i} intensity="soft" className="px-1">
+              <AccordionItem value={`faq-${i}`} className="border-0 px-4">
+                <AccordionTrigger className="text-left hover:no-underline py-5" style={{ ...ms, color: "#1a3a5c" }}>
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 leading-relaxed text-gray-500" style={ms4}>
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            </GlowCard>
           ))}
         </Accordion>
       </div>
