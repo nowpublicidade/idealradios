@@ -1423,6 +1423,89 @@ const IdealElectricWay = () => {
           </p>
         </div>
       </footer>
+
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            {/* Overlay */}
+            <div
+              className="absolute inset-0"
+              style={{ background: "rgba(6,14,36,0.75)", backdropFilter: "blur(6px)" }}
+              onClick={handleCloseSuccess}
+            />
+            {/* Card */}
+            <motion.div
+              className="relative rounded-2xl p-8 sm:p-10 max-w-md w-full text-center"
+              style={{
+                background: "#ffffff",
+                boxShadow: "0 24px 80px rgba(14,74,173,0.25), 0 4px 20px rgba(0,0,0,0.10)",
+              }}
+              initial={{ opacity: 0, scale: 0.85, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 10 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {/* Check icon */}
+              <div className="flex justify-center mb-5">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center"
+                  style={{
+                    background: "rgba(14,74,173,0.08)",
+                    border: "2px solid rgba(14,74,173,0.20)",
+                    animation: "pulse 2.5s ease-in-out infinite",
+                  }}
+                >
+                  <CheckCircle2 size={32} style={{ color: "#0E4AAD" }} />
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl mb-3" style={{ ...ms700, color: "#0b2760" }}>
+                Recebemos sua solicitação!
+              </h3>
+
+              <p className="text-sm leading-relaxed mb-4" style={{ ...ms400, color: "#4a6080" }}>
+                Em breve, um de nossos consultores entrará em contato para agendar a demonstração na sua operação.
+                Fique atento ao seu WhatsApp e e-mail.
+              </p>
+
+              <p
+                className="text-xs mb-6 px-3 py-1.5 rounded-full inline-block"
+                style={{
+                  ...ms600,
+                  color: "#0E4AAD",
+                  background: "rgba(14,74,173,0.06)",
+                  border: "1px solid rgba(14,74,173,0.12)",
+                }}
+              >
+                Tempo médio de resposta: até 2 horas úteis
+              </p>
+
+              <div>
+                <button
+                  onClick={handleCloseSuccess}
+                  className="w-full py-3 rounded-xl text-white text-sm transition-all duration-200"
+                  style={{
+                    ...ms700,
+                    background: "#0E4AAD",
+                    boxShadow: "0 4px 16px rgba(14,74,173,0.30)",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#2072B9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#0E4AAD")}
+                >
+                  Entendido
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
