@@ -147,7 +147,7 @@ const ServicosSection = () => {
             ctaLabel="Solicitar assistência técnica agora"
             ctaVariant="solid"
             note="Diagnóstico sem compromisso · Peça original garantida"
-            imgSrc="/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg"
+            imgSrc="46739a46-17a7-4f83-8657-571081049992.png"
             imgAlt="Assistência técnica Ideal Rádios"
             badgeLabel="48h de atendimento"
             reverse={false}
