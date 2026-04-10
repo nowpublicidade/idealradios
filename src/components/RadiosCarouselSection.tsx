@@ -97,7 +97,8 @@ const motorolaRadios = [
 ];
 
 type Brand = "hytera" | "motorola";
-const CARDS_PER_PAGE = 3;
+const CARDS_PER_PAGE_DESKTOP = 3;
+const CARDS_PER_PAGE_MOBILE = 1;
 const ms = { fontFamily: "'Montserrat', sans-serif" };
 
 const RadioCard = ({ radio, brand }: { radio: (typeof hyteraRadios)[0]; brand: Brand }) => (

@@ -819,7 +819,7 @@ const IdealElectricWay = () => {
                       el.style.transform = "translateY(-6px)";
                       el.style.background = "rgba(255,255,255,0.95)";
                       el.style.backdropFilter = "blur(20px)";
-                      el.style.WebkitBackdropFilter = "blur(20px)";
+                      (el.style as any).WebkitBackdropFilter = "blur(20px)";
                       el.style.boxShadow =
                         "0 20px 60px rgba(14,74,173,0.18), 0 4px 16px rgba(14,74,173,0.12), inset 0 1px 0 rgba(255,255,255,1)";
                       el.style.border = "1px solid rgba(14,74,173,0.20)";
@@ -829,7 +829,7 @@ const IdealElectricWay = () => {
                       el.style.transform = "translateY(0)";
                       el.style.background = "#ffffff";
                       el.style.backdropFilter = "none";
-                      el.style.WebkitBackdropFilter = "none";
+                      (el.style as any).WebkitBackdropFilter = "none";
                       el.style.boxShadow = "0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)";
                       el.style.border = "1px solid rgba(255,255,255,0.9)";
                     }}
