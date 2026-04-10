@@ -243,7 +243,7 @@ const RadiosCarouselSection = () => {
           {/* Cards */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${activeBrand}-${page}`}
+              key={`${activeBrand}-${clampedPage}`}
               className="flex flex-col md:flex-row gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -265,7 +265,7 @@ const RadiosCarouselSection = () => {
             <div className="flex items-center justify-center gap-4 mt-10">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
-                disabled={page === 0}
+                disabled={clampedPage === 0}
                 className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0E4AAD] hover:bg-[#EBF2FF] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronLeft size={18} />
@@ -276,14 +276,14 @@ const RadiosCarouselSection = () => {
                     key={i}
                     onClick={() => setPage(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      i === page ? "bg-[#0E4AAD] w-6" : "bg-gray-300 hover:bg-gray-400 w-2"
+                      i === clampedPage ? "bg-[#0E4AAD] w-6" : "bg-gray-300 hover:bg-gray-400 w-2"
                     }`}
                   />
                 ))}
               </div>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-                disabled={page === totalPages - 1}
+                disabled={clampedPage === totalPages - 1}
                 className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0E4AAD] hover:bg-[#EBF2FF] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronRight size={18} />
