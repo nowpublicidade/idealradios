@@ -67,6 +67,17 @@ const Navbar = () => {
                 />
               </a>
             ))}
+            <a
+              href="/ideal-eletric-way"
+              className="text-sm transition-colors duration-200 relative group flex items-center gap-1"
+              style={{ ...ms600, color: scrolled ? "#16A34A" : "#4ADE80" }}
+            >
+              ⚡ IEW
+              <span
+                className="absolute -bottom-0.5 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full"
+                style={{ background: "linear-gradient(90deg,#22C55E,#4ADE80)" }}
+              />
+            </a>
           </div>
 
           {/* CTA */}
@@ -119,6 +130,14 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/ideal-eletric-way"
+              onClick={() => setOpen(false)}
+              className="block text-sm py-2 border-b"
+              style={{ ...ms600, color: "#16A34A", borderColor: "rgba(14,74,173,0.08)" }}
+            >
+              ⚡ Ideal Electric Way
+            </a>
             <a
               href="#contato"
               onClick={() => setOpen(false)}
