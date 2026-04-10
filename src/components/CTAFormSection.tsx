@@ -89,15 +89,15 @@ const CTAFormSection = () => {
                   style={{ ...ms6, color: "#a8e0f8" }}
                 >
                   <MessageCircle size={20} />
-                  (11) 99999-9999
+                  (11) 2759-2520
                 </a>
                 <a
-                  href="mailto:contato@idealradios.com.br"
+                  href="mailto:comercial@idealradio.com.br"
                   className="flex items-center gap-3 transition-colors hover:opacity-90"
                   style={{ ...ms6, color: "#a8e0f8" }}
                 >
                   <Mail size={20} />
-                  contato@idealradios.com.br
+                  comercial@idealradio.com.br
                 </a>
               </div>
             </div>
