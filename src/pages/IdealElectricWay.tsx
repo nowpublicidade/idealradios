@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Leaf,
@@ -18,7 +18,6 @@ import {
   Settings,
   Phone,
   ChevronRight,
-  Quote,
   ArrowLeft,
   Menu,
   X,
@@ -26,7 +25,6 @@ import {
   Mail,
   Globe,
   MessageSquare,
-  User,
   Building2,
 } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
@@ -276,54 +274,39 @@ const NavbarIEW = () => {
   );
 };
 
-/* ─── FLIP CARD ─── */
-const FlipCard = ({ icon: Icon, label, desc }: { icon: any; label: string; desc: string }) => {
-  const [flipped, setFlipped] = useState(false);
+/* ─── SCROLL REVEAL CARD ─── */
+const ScrollRevealCard = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+  const [visible, setVisible] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), delay);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [delay]);
 
   return (
     <div
-      className="h-48 cursor-pointer"
-      style={{ perspective: "1000px" }}
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
-      onClick={() => setFlipped(!flipped)}
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0) rotateX(0deg)" : "translateY(28px) rotateX(6deg)",
+        transition: "opacity 0.55s ease, transform 0.55s ease",
+        perspective: "800px",
+        transformOrigin: "top center",
+      }}
     >
-      <div
-        className="relative w-full h-full transition-transform duration-500"
-        style={{
-          transformStyle: "preserve-3d",
-          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-        }}
-      >
-        {/* Front */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-2xl p-6"
-          style={{
-            backfaceVisibility: "hidden",
-            background: "white",
-            border: "1px solid rgba(14,74,173,0.12)",
-            boxShadow: "0 2px 16px rgba(14,74,173,0.06)",
-          }}
-        >
-          <Icon size={32} strokeWidth={1.5} style={{ color: "#0E4AAD" }} />
-          <h3 className="text-base text-center" style={{ ...ms700, color: "#0b2760" }}>
-            {label}
-          </h3>
-        </div>
-        {/* Back */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl p-6"
-          style={{
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-            background: "linear-gradient(135deg, #0E4AAD, #2072B9)",
-          }}
-        >
-          <p className="text-sm text-white text-center leading-relaxed" style={ms400}>
-            {desc}
-          </p>
-        </div>
-      </div>
+      {children}
     </div>
   );
 };
@@ -604,24 +587,51 @@ const IdealElectricWay = () => {
               {products.map((p, i) => (
                 <SectionReveal key={p.name} animation="fade-up" delay={0.1 + i * 0.08}>
                   <div
-                    className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col"
+                    className="rounded-2xl overflow-hidden transition-all duration-500 group h-full flex flex-col cursor-pointer"
                     style={{
-                      background: "white",
-                      boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+                      background: "#ffffff",
+                      boxShadow: "0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
+                      border: "1px solid rgba(255,255,255,0.9)",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.transform = "translateY(-6px)";
+                      el.style.background = "rgba(255,255,255,0.95)";
+                      el.style.backdropFilter = "blur(20px)";
+                      el.style.WebkitBackdropFilter = "blur(20px)";
+                      el.style.boxShadow =
+                        "0 20px 60px rgba(14,74,173,0.18), 0 4px 16px rgba(14,74,173,0.12), inset 0 1px 0 rgba(255,255,255,1)";
+                      el.style.border = "1px solid rgba(14,74,173,0.20)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.transform = "translateY(0)";
+                      el.style.background = "#ffffff";
+                      el.style.backdropFilter = "none";
+                      el.style.WebkitBackdropFilter = "none";
+                      el.style.boxShadow = "0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)";
+                      el.style.border = "1px solid rgba(255,255,255,0.9)";
                     }}
                   >
-                    <div className="relative h-52 overflow-hidden bg-gray-50">
+                    {/* Image area — pure white background */}
+                    <div className="relative h-52 overflow-hidden" style={{ background: "#ffffff" }}>
                       <img
                         src={p.img}
                         alt={p.name}
-                        className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-108"
+                        style={{ transform: "scale(1)" }}
+                      />
+                      {/* Subtle blue shimmer line at bottom of image on hover */}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        style={{ background: "linear-gradient(90deg, transparent, rgba(14,74,173,0.3), transparent)" }}
                       />
                     </div>
-                    <div className="p-5 flex flex-col flex-1">
-                      <span className="text-xs font-bold tracking-wider mb-1" style={{ ...ms700, color: "#0E4AAD" }}>
+                    <div className="p-5 flex flex-col flex-1" style={{ borderTop: "1px solid rgba(14,74,173,0.06)" }}>
+                      <span className="text-xs tracking-[2px] uppercase mb-1.5" style={{ ...ms700, color: "#1F9CD8" }}>
                         {p.name}
                       </span>
-                      <h3 className="text-sm mb-2" style={{ ...ms700, color: "#0b2760" }}>
+                      <h3 className="text-sm mb-2.5 leading-snug" style={{ ...ms700, color: "#0b2760" }}>
                         {p.subtitle}
                       </h3>
                       <p className="text-xs leading-relaxed flex-1" style={{ ...ms400, color: "#5a7a9a" }}>
@@ -636,30 +646,133 @@ const IdealElectricWay = () => {
         </div>
       </section>
 
-      {/* ── 4. DIFERENCIAIS — Card flip ── */}
+      {/* ── 4. DIFERENCIAIS ── */}
       <section id="vantagens" className="relative z-30">
         <div
           className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
           style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%)" }}
         >
+          {/* Decorative orb */}
+          <div
+            className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(31,156,216,0.06) 0%, transparent 70%)",
+              transform: "translate(30%, -50%)",
+            }}
+          />
           <div className="container mx-auto px-4 relative z-10">
-            <SectionReveal animation="fade-up" delay={0.1}>
-              <div className="text-center mb-14">
-                <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
-                  Diferenciais
-                </span>
-                <h2 className="text-3xl md:text-4xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
-                  Por que escolher a <span style={{ color: "#0E4AAD" }}>IEW</span>?
-                </h2>
-              </div>
-            </SectionReveal>
+            <div className="max-w-5xl mx-auto">
+              {/* Header */}
+              <SectionReveal animation="fade-up" delay={0.1}>
+                <div className="mb-16">
+                  <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
+                    Diferenciais
+                  </span>
+                  <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                    <h2 className="text-3xl md:text-4xl" style={{ ...ms700, color: "#0b2760" }}>
+                      Por que escolher a <span style={{ color: "#0E4AAD" }}>IEW</span>?
+                    </h2>
+                    <p className="text-sm max-w-xs text-right hidden md:block" style={{ ...ms400, color: "#7a9abf" }}>
+                      Mais do que veículos — uma solução completa de mobilidade corporativa.
+                    </p>
+                  </div>
+                </div>
+              </SectionReveal>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {advantages.map((a, i) => (
-                <SectionReveal key={a.label} animation="fade-up" delay={0.1 + i * 0.08}>
-                  <FlipCard icon={a.icon} label={a.label} desc={a.desc} />
+              {/* Two-column layout: left = big number list, right = highlight card */}
+              <div className="grid md:grid-cols-3 gap-8 items-start">
+                {/* Left: 4 items */}
+                <div className="md:col-span-2 flex flex-col gap-0">
+                  {advantages.map((a, i) => (
+                    <SectionReveal key={a.label} animation="fade-left" delay={0.1 + i * 0.07}>
+                      <div
+                        className="group flex items-start gap-6 py-6 transition-all duration-300 cursor-default"
+                        style={{ borderBottom: i < advantages.length - 1 ? "1px solid rgba(14,74,173,0.08)" : "none" }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLDivElement).style.paddingLeft = "8px";
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLDivElement).style.paddingLeft = "0px";
+                        }}
+                      >
+                        {/* Number */}
+                        <span
+                          className="text-4xl leading-none shrink-0 w-10 text-right transition-all duration-300"
+                          style={{
+                            ...bc700,
+                            color: "rgba(14,74,173,0.12)",
+                            lineHeight: 1,
+                          }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {/* Icon + content */}
+                        <div className="flex items-start gap-4 flex-1">
+                          <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
+                            style={{
+                              background: "linear-gradient(135deg, rgba(14,74,173,0.10), rgba(31,156,216,0.10))",
+                              border: "1px solid rgba(14,74,173,0.12)",
+                            }}
+                          >
+                            <a.icon size={18} strokeWidth={1.5} style={{ color: "#0E4AAD" }} />
+                          </div>
+                          <div>
+                            <h3
+                              className="text-base mb-1 transition-colors duration-200 group-hover:text-[#0E4AAD]"
+                              style={{ ...ms700, color: "#0b2760" }}
+                            >
+                              {a.label}
+                            </h3>
+                            <p className="text-sm leading-relaxed" style={{ ...ms400, color: "#5a7a9a" }}>
+                              {a.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </SectionReveal>
+                  ))}
+                </div>
+
+                {/* Right: sticky highlight card */}
+                <SectionReveal animation="fade-right" delay={0.2} className="md:col-span-1">
+                  <div
+                    className="sticky top-28 rounded-3xl p-8 flex flex-col gap-6"
+                    style={{
+                      background: "linear-gradient(145deg, #0b2760, #0E4AAD)",
+                      boxShadow: "0 24px 64px rgba(14,74,173,0.28)",
+                    }}
+                  >
+                    <Zap size={28} style={{ color: "#1F9CD8" }} strokeWidth={1.5} />
+                    <div>
+                      <p className="text-4xl text-white mb-1" style={{ ...bc700 }}>
+                        90%
+                      </p>
+                      <p className="text-sm text-white/70 leading-relaxed" style={ms400}>
+                        de economia em combustível e manutenção comparado a veículos convencionais.
+                      </p>
+                    </div>
+                    <div className="h-px w-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+                    <div>
+                      <p className="text-4xl text-white mb-1" style={{ ...bc700 }}>
+                        18 anos
+                      </p>
+                      <p className="text-sm text-white/70 leading-relaxed" style={ms400}>
+                        de expertise em soluções corporativas trazidas para a mobilidade elétrica.
+                      </p>
+                    </div>
+                    <div className="h-px w-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+                    <div>
+                      <p className="text-4xl text-white mb-1" style={{ ...bc700 }}>
+                        Zero
+                      </p>
+                      <p className="text-sm text-white/70 leading-relaxed" style={ms400}>
+                        downtime com frota reserva e assistência técnica própria em todo o Brasil.
+                      </p>
+                    </div>
+                  </div>
                 </SectionReveal>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -720,75 +833,97 @@ const IdealElectricWay = () => {
       {/* ── 6. TIMELINE ── */}
       <section className="relative z-50">
         <div
-          className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
+          className="rounded-t-3xl -mt-8 py-24 relative overflow-hidden"
           style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%)" }}
         >
+          {/* Decorative orb */}
+          <div
+            className="absolute bottom-0 left-1/4 w-[600px] h-[400px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse, rgba(14,74,173,0.04) 0%, transparent 70%)",
+            }}
+          />
           <div className="container mx-auto px-4 relative z-10">
             <SectionReveal animation="fade-up" delay={0.1}>
-              <div className="text-center mb-14">
+              <div className="text-center mb-20">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
                   Como funciona
                 </span>
-                <h2 className="text-3xl md:text-4xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
-                  Do contato à operação
+                <h2 className="text-3xl md:text-5xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
+                  Do contato à{" "}
+                  <span
+                    style={{
+                      backgroundImage: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    operação
+                  </span>
                 </h2>
+                <p className="text-sm max-w-md mx-auto" style={{ ...ms400, color: "#7a9abf" }}>
+                  Seis etapas simples para sua empresa começar a operar com mobilidade elétrica corporativa.
+                </p>
               </div>
             </SectionReveal>
 
-            <div className="max-w-3xl mx-auto relative">
-              {/* Vertical line */}
-              <div
-                className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5"
-                style={{ background: "linear-gradient(to bottom, #0E4AAD, #1F9CD8)", transform: "translateX(-50%)" }}
-              />
-
-              {timelineSteps.map((step, i) => {
-                const isLeft = i % 2 === 0;
-                return (
-                  <SectionReveal key={step.num} animation="fade-up" delay={0.1 + i * 0.1}>
-                    <div
-                      className={`relative flex items-start mb-12 last:mb-0 ${
-                        /* Mobile: always right. Desktop: alternate */
-                        "md:justify-" + (isLeft ? "start" : "end")
-                      }`}
-                    >
-                      {/* Dot */}
+            {/* Steps grid — 2 columns, cards flip in on scroll */}
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
+              {timelineSteps.map((step, i) => (
+                <ScrollRevealCard key={step.num} delay={i * 80}>
+                  <div
+                    className="relative rounded-2xl p-6 h-full flex flex-col gap-4 group transition-all duration-500 hover:-translate-y-1"
+                    style={{
+                      background: "white",
+                      border: "1px solid rgba(14,74,173,0.08)",
+                      boxShadow: "0 4px 24px rgba(14,74,173,0.06)",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.boxShadow =
+                        "0 16px 48px rgba(14,74,173,0.14), inset 0 1px 0 rgba(255,255,255,1)";
+                      (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(14,74,173,0.18)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(14,74,173,0.06)";
+                      (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(14,74,173,0.08)";
+                    }}
+                  >
+                    {/* Top row: number + icon */}
+                    <div className="flex items-center justify-between">
+                      <span
+                        className="text-5xl leading-none"
+                        style={{ ...bc700, color: "rgba(14,74,173,0.08)", lineHeight: 1 }}
+                      >
+                        {String(step.num).padStart(2, "0")}
+                      </span>
                       <div
-                        className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10"
+                        className="w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                         style={{
-                          transform: "translate(-50%, 0)",
                           background: "linear-gradient(135deg, #0E4AAD, #2072B9)",
-                          boxShadow: "0 4px 16px rgba(14,74,173,0.3)",
+                          boxShadow: "0 4px 14px rgba(14,74,173,0.30)",
                         }}
                       >
-                        <step.icon size={18} color="white" />
-                      </div>
-
-                      {/* Content */}
-                      <div
-                        className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] rounded-2xl p-5 transition-all duration-300 hover:shadow-lg ${
-                          isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
-                        }`}
-                        style={{
-                          background: "white",
-                          border: "1px solid rgba(14,74,173,0.08)",
-                          boxShadow: "0 2px 16px rgba(14,74,173,0.06)",
-                        }}
-                      >
-                        <span className="text-xs font-bold" style={{ ...ms700, color: "#1F9CD8" }}>
-                          Passo {step.num}
-                        </span>
-                        <h3 className="text-base mb-1 mt-1" style={{ ...ms700, color: "#0b2760" }}>
-                          {step.title}
-                        </h3>
-                        <p className="text-sm" style={{ ...ms400, color: "#5a7a9a" }}>
-                          {step.desc}
-                        </p>
+                        <step.icon size={18} color="white" strokeWidth={1.5} />
                       </div>
                     </div>
-                  </SectionReveal>
-                );
-              })}
+                    {/* Text */}
+                    <div>
+                      <h3 className="text-base mb-1.5" style={{ ...ms700, color: "#0b2760" }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ ...ms400, color: "#5a7a9a" }}>
+                        {step.desc}
+                      </p>
+                    </div>
+                    {/* Bottom accent line */}
+                    <div
+                      className="mt-auto h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-500"
+                      style={{ background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)" }}
+                    />
+                  </div>
+                </ScrollRevealCard>
+              ))}
             </div>
           </div>
         </div>
@@ -797,56 +932,56 @@ const IdealElectricWay = () => {
       {/* ── 7. DEPOIMENTO ── */}
       <section className="relative z-[60]">
         <div
-          className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
-          style={{ background: "linear-gradient(160deg, #0b2760 0%, #091e52 50%, #060e24 100%)" }}
+          className="rounded-t-3xl -mt-8 py-24 relative overflow-hidden"
+          style={{ background: "linear-gradient(160deg, #0b2760 0%, #091e52 60%, #060e24 100%)" }}
         >
-          {/* Aspas decorativas */}
+          {/* Large faint quote mark */}
           <div
-            className="absolute top-8 left-1/2 -translate-x-1/2 text-[200px] leading-none select-none pointer-events-none"
-            style={{ ...bc700, color: "rgba(31,156,216,0.07)" }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+            aria-hidden
           >
-            "
+            <span
+              className="text-[28rem] leading-none"
+              style={{ ...bc700, color: "rgba(31,156,216,0.04)", marginTop: "-2rem" }}
+            >
+              "
+            </span>
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <SectionReveal animation="fade-up" delay={0.1}>
-              <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-10">
-                {/* Barra lateral decorativa + citação */}
-                <div className="flex-1">
-                  <div className="flex gap-5">
-                    <div
-                      className="w-1 rounded-full shrink-0"
-                      style={{ background: "linear-gradient(to bottom, #0E4AAD, #1F9CD8)" }}
-                    />
-                    <div>
-                      <Quote size={32} style={{ color: "rgba(31,156,216,0.4)" }} className="mb-4" />
-                      <blockquote
-                        className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 italic"
-                        style={{ ...ms400, fontSize: "1.25rem" }}
-                      >
-                        "A Ideal Electric Way nasce para complementar o que já fazemos com excelência. Nossos clientes
-                        precisam de agilidade, alcance e eficiência. A IEW entrega exatamente isso, com tecnologia limpa
-                        e a robustez que o mercado corporativo exige."
-                      </blockquote>
-                      <div className="flex items-center gap-4">
-                        {/* Placeholder foto circular */}
-                        <div
-                          className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
-                          style={{ background: "rgba(14,74,173,0.3)", border: "2px solid #1F9CD8" }}
-                        >
-                          <User size={24} color="white" />
-                        </div>
-                        <div>
-                          <p className="text-base text-white" style={ms700}>
-                            Thiago Terra
-                          </p>
-                          <p className="text-sm" style={{ ...ms400, color: "rgba(200,233,248,0.50)" }}>
-                            Head de Negócios — Ideal Electric Way
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="max-w-2xl mx-auto text-center flex flex-col items-center gap-8">
+                {/* Accent line */}
+                <div
+                  className="w-10 h-0.5 rounded-full"
+                  style={{ background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)" }}
+                />
+
+                {/* Quote */}
+                <blockquote
+                  className="text-xl md:text-2xl leading-relaxed text-white/90"
+                  style={{ ...ms400, fontStyle: "italic" }}
+                >
+                  "A Ideal Electric Way nasce para complementar o que já fazemos com excelência. Nossos clientes
+                  precisam de agilidade, alcance e eficiência — a IEW entrega exatamente isso."
+                </blockquote>
+
+                {/* Author */}
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-base text-white" style={ms700}>
+                    Thiago Terra
+                  </p>
+                  <span
+                    className="text-xs uppercase tracking-[3px] px-4 py-1.5 rounded-full"
+                    style={{
+                      ...ms600,
+                      color: "#1F9CD8",
+                      background: "rgba(31,156,216,0.10)",
+                      border: "1px solid rgba(31,156,216,0.18)",
+                    }}
+                  >
+                    Head de Negócios · Ideal Electric Way
+                  </span>
                 </div>
               </div>
             </SectionReveal>
