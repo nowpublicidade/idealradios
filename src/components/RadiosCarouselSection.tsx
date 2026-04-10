@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -157,12 +158,14 @@ const RadioCard = ({ radio, brand }: { radio: (typeof hyteraRadios)[0]; brand: B
 );
 
 const RadiosCarouselSection = () => {
+  const isMobile = useIsMobile();
   const [activeBrand, setActiveBrand] = useState<Brand>("hytera");
   const [page, setPage] = useState(0);
 
+  const cardsPerPage = isMobile ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_DESKTOP;
   const radios = activeBrand === "hytera" ? hyteraRadios : motorolaRadios;
-  const totalPages = Math.ceil(radios.length / CARDS_PER_PAGE);
-  const currentRadios = radios.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
+  const totalPages = Math.ceil(radios.length / cardsPerPage);
+  const currentRadios = radios.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
 
   const handleBrandChange = (brand: Brand) => {
     setActiveBrand(brand);
@@ -240,7 +243,7 @@ const RadiosCarouselSection = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={`${activeBrand}-${page}`}
-              className="flex gap-6"
+              className="flex flex-col md:flex-row gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -249,8 +252,8 @@ const RadiosCarouselSection = () => {
               {currentRadios.map((radio) => (
                 <RadioCard key={radio.name} radio={radio} brand={activeBrand} />
               ))}
-              {currentRadios.length < CARDS_PER_PAGE &&
-                Array.from({ length: CARDS_PER_PAGE - currentRadios.length }).map((_, i) => (
+              {currentRadios.length < cardsPerPage &&
+                Array.from({ length: cardsPerPage - currentRadios.length }).map((_, i) => (
                   <div key={`spacer-${i}`} className="flex-1 min-w-0" />
                 ))}
             </motion.div>
