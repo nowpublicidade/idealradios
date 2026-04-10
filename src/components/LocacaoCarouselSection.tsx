@@ -194,14 +194,14 @@ const LocacaoCarouselSection = () => {
           <Button
             asChild
             size="lg"
-            className="text-white"
+            className="text-white w-full sm:w-auto"
             style={{
               ...ms,
               background: "linear-gradient(90deg, #1263c8, #1F9CD8)",
               boxShadow: "0 8px 32px rgba(31,156,216,0.35)",
             }}
           >
-            <a href="#contato">Verificar disponibilidade e solicitar proposta</a>
+            <a href="#contato">Verificar disponibilidade</a>
           </Button>
           <p className="text-xs mt-3" style={{ ...ms4, color: "rgba(200,233,248,0.40)" }}>
             Resposta em até 2h úteis · Cotação gratuita

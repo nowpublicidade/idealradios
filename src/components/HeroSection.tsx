@@ -73,11 +73,11 @@ const HeroSection = () => {
               entrega em até 48h.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
               <Button
                 asChild
                 size="lg"
-                className="text-base text-white"
+                className="text-base text-white w-full sm:w-auto"
                 style={{
                   ...ms,
                   background: "linear-gradient(90deg, #1263c8, #1F9CD8)",
@@ -90,7 +90,7 @@ const HeroSection = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="text-base hover:text-white transition-colors"
+                className="text-base hover:text-white transition-colors w-full sm:w-auto"
                 style={{
                   ...ms,
                   borderColor: "rgba(100,200,245,0.40)",
@@ -106,7 +106,7 @@ const HeroSection = () => {
             </div>
 
             {/* Mini stats */}
-            <div className="flex items-center gap-8 pt-2">
+            <div className="flex items-center justify-center sm:justify-start gap-8 pt-2">
               {[
                 { value: "18+", label: "anos no mercado" },
                 { value: "48h", label: "entrega nacional" },
