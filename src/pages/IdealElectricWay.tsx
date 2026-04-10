@@ -170,7 +170,7 @@ const IdealElectricWay = () => {
       <section
         className="relative min-h-[92vh] flex items-center justify-start overflow-hidden"
         style={{
-          backgroundImage: "url('/assets/imgi_7_IMG_7356-1024x576.jpeg')",
+          backgroundImage: "url('/assets/iew-hero-bg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center 40%",
         }}
