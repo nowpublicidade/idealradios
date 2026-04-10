@@ -98,7 +98,7 @@ const HeroSection = () => {
                   color: "#c8e9f8",
                 }}
               >
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/551127592520" target="_blank" rel="noopener noreferrer">
                   <MessageCircle size={18} className="mr-2" />
                   Falar no WhatsApp
                 </a>

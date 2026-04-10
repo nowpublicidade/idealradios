@@ -152,7 +152,7 @@ const CTAFormSection = () => {
                 <Input
                   value={form.telefone}
                   onChange={(e) => setForm({ ...form, telefone: e.target.value })}
-                  placeholder="(11) 99999-9999"
+                  placeholder="(11) 2759-2520"
                   maxLength={20}
                   style={{
                     ...ms4,
