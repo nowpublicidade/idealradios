@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { asset } from "@/lib/assets";
 
 const ms700 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
@@ -68,8 +69,8 @@ const Navbar = () => {
                 />
               </a>
             ))}
-            <a
-              href="/ideal-eletric-way"
+            <Link
+              to="/ideal-eletric-way"
               className="text-sm transition-colors duration-200 relative group flex items-center gap-1"
               style={{ ...ms600, color: scrolled ? "#1a3a5c" : "rgba(255,255,255,0.95)" }}
             >
@@ -78,7 +79,7 @@ const Navbar = () => {
                 className="absolute -bottom-0.5 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full"
                 style={{ background: "linear-gradient(90deg,#0E4AAD,#1F9CD8)" }}
               />
-            </a>
+            </Link>
           </div>
 
           {/* CTA */}
@@ -131,14 +132,14 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/ideal-eletric-way"
+            <Link
+              to="/ideal-eletric-way"
               onClick={() => setOpen(false)}
               className="block text-sm py-2 border-b"
               style={{ ...ms600, color: "#1a3a5c", borderColor: "rgba(14,74,173,0.08)" }}
             >
               Ideal Electric Way
-            </a>
+            </Link>
             <a
               href="#contato"
               onClick={() => setOpen(false)}
