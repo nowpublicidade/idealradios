@@ -533,12 +533,7 @@ const IdealElectricWay = () => {
                       { icon: Headphones, label: "Assistência técnica nacional" },
                     ].map(({ icon: Icon, label }) => (
                       <div key={label} className="flex items-center gap-3">
-                        <div
-                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-                          style={{ background: "rgba(14,74,173,0.08)" }}
-                        >
-                          <Icon size={15} style={{ color: "#0E4AAD" }} />
-                        </div>
+                        <Icon size={16} style={{ color: "#0E4AAD" }} strokeWidth={1.5} />
                         <span className="text-sm" style={{ ...ms500, color: "#0b2760" }}>
                           {label}
                         </span>
@@ -833,97 +828,72 @@ const IdealElectricWay = () => {
       {/* ── 6. TIMELINE ── */}
       <section className="relative z-50">
         <div
-          className="rounded-t-3xl -mt-8 py-24 relative overflow-hidden"
+          className="rounded-t-3xl -mt-8 py-20 relative overflow-hidden"
           style={{ background: "linear-gradient(160deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%)" }}
         >
-          {/* Decorative orb */}
-          <div
-            className="absolute bottom-0 left-1/4 w-[600px] h-[400px] rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(ellipse, rgba(14,74,173,0.04) 0%, transparent 70%)",
-            }}
-          />
           <div className="container mx-auto px-4 relative z-10">
             <SectionReveal animation="fade-up" delay={0.1}>
-              <div className="text-center mb-20">
+              <div className="text-center mb-14">
                 <span className="text-xs uppercase tracking-[3px] block mb-3" style={{ ...ms600, color: "#2072B9" }}>
                   Como funciona
                 </span>
-                <h2 className="text-3xl md:text-5xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
-                  Do contato à{" "}
-                  <span
-                    style={{
-                      backgroundImage: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
-                    operação
-                  </span>
+                <h2 className="text-3xl md:text-4xl mb-4" style={{ ...ms700, color: "#0b2760" }}>
+                  Do contato à operação
                 </h2>
-                <p className="text-sm max-w-md mx-auto" style={{ ...ms400, color: "#7a9abf" }}>
-                  Seis etapas simples para sua empresa começar a operar com mobilidade elétrica corporativa.
-                </p>
               </div>
             </SectionReveal>
 
-            {/* Steps grid — 2 columns, cards flip in on scroll */}
-            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
-              {timelineSteps.map((step, i) => (
-                <ScrollRevealCard key={step.num} delay={i * 80}>
-                  <div
-                    className="relative rounded-2xl p-6 h-full flex flex-col gap-4 group transition-all duration-500 hover:-translate-y-1"
-                    style={{
-                      background: "white",
-                      border: "1px solid rgba(14,74,173,0.08)",
-                      boxShadow: "0 4px 24px rgba(14,74,173,0.06)",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.boxShadow =
-                        "0 16px 48px rgba(14,74,173,0.14), inset 0 1px 0 rgba(255,255,255,1)";
-                      (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(14,74,173,0.18)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(14,74,173,0.06)";
-                      (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(14,74,173,0.08)";
-                    }}
-                  >
-                    {/* Top row: number + icon */}
-                    <div className="flex items-center justify-between">
-                      <span
-                        className="text-5xl leading-none"
-                        style={{ ...bc700, color: "rgba(14,74,173,0.08)", lineHeight: 1 }}
-                      >
-                        {String(step.num).padStart(2, "0")}
-                      </span>
+            <div className="max-w-3xl mx-auto relative">
+              {/* Vertical line */}
+              <div
+                className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5"
+                style={{ background: "linear-gradient(to bottom, #0E4AAD, #1F9CD8)", transform: "translateX(-50%)" }}
+              />
+
+              {timelineSteps.map((step, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <SectionReveal key={step.num} animation="fade-up" delay={0.1 + i * 0.1}>
+                    <div
+                      className={`relative flex items-start mb-12 last:mb-0 ${"md:justify-" + (isLeft ? "start" : "end")}`}
+                    >
+                      {/* Dot */}
                       <div
-                        className="w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                        className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10"
                         style={{
+                          transform: "translate(-50%, 0)",
                           background: "linear-gradient(135deg, #0E4AAD, #2072B9)",
-                          boxShadow: "0 4px 14px rgba(14,74,173,0.30)",
+                          boxShadow: "0 4px 16px rgba(14,74,173,0.3)",
                         }}
                       >
-                        <step.icon size={18} color="white" strokeWidth={1.5} />
+                        <step.icon size={18} color="white" />
+                      </div>
+
+                      {/* Content */}
+                      <div
+                        className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] rounded-2xl p-5 transition-all duration-300 hover:shadow-lg ${
+                          isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
+                        }`}
+                        style={{
+                          background: "white",
+                          border: "1px solid rgba(14,74,173,0.08)",
+                          boxShadow: "0 2px 16px rgba(14,74,173,0.06)",
+                        }}
+                      >
+                        <span className="text-xs font-bold" style={{ ...ms700, color: "#1F9CD8" }}>
+                          Passo {step.num}
+                        </span>
+                        <h3 className="text-base mb-1 mt-1" style={{ ...ms700, color: "#0b2760" }}>
+                          {step.title}
+                        </h3>
+                        <p className="text-sm" style={{ ...ms400, color: "#5a7a9a" }}>
+                          {step.desc}
+                        </p>
                       </div>
                     </div>
-                    {/* Text */}
-                    <div>
-                      <h3 className="text-base mb-1.5" style={{ ...ms700, color: "#0b2760" }}>
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed" style={{ ...ms400, color: "#5a7a9a" }}>
-                        {step.desc}
-                      </p>
-                    </div>
-                    {/* Bottom accent line */}
-                    <div
-                      className="mt-auto h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-500"
-                      style={{ background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)" }}
-                    />
-                  </div>
-                </ScrollRevealCard>
-              ))}
+                  </SectionReveal>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -935,29 +905,13 @@ const IdealElectricWay = () => {
           className="rounded-t-3xl -mt-8 py-24 relative overflow-hidden"
           style={{ background: "linear-gradient(160deg, #0b2760 0%, #091e52 60%, #060e24 100%)" }}
         >
-          {/* Large faint quote mark */}
-          <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-            aria-hidden
-          >
-            <span
-              className="text-[28rem] leading-none"
-              style={{ ...bc700, color: "rgba(31,156,216,0.04)", marginTop: "-2rem" }}
-            >
-              "
-            </span>
-          </div>
-
           <div className="container mx-auto px-4 relative z-10">
             <SectionReveal animation="fade-up" delay={0.1}>
               <div className="max-w-2xl mx-auto text-center flex flex-col items-center gap-8">
-                {/* Accent line */}
                 <div
                   className="w-10 h-0.5 rounded-full"
                   style={{ background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)" }}
                 />
-
-                {/* Quote */}
                 <blockquote
                   className="text-xl md:text-2xl leading-relaxed text-white/90"
                   style={{ ...ms400, fontStyle: "italic" }}
@@ -965,8 +919,6 @@ const IdealElectricWay = () => {
                   "A Ideal Electric Way nasce para complementar o que já fazemos com excelência. Nossos clientes
                   precisam de agilidade, alcance e eficiência — a IEW entrega exatamente isso."
                 </blockquote>
-
-                {/* Author */}
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-base text-white" style={ms700}>
                     Thiago Terra
