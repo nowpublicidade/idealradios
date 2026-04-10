@@ -245,7 +245,7 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
         {/* Image header */}
         <div
           className="relative h-56 flex items-center justify-center overflow-hidden rounded-t-3xl"
-          style={{ background: "linear-gradient(135deg, #f0f7ff 0%, #e8f1ff 100%)" }}
+          style={{ background: "#ffffff" }}
         >
           <img
             src={product.img}
@@ -253,10 +253,10 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
             className="h-44 w-auto object-contain"
             style={{ filter: "drop-shadow(0 8px 24px rgba(14,74,173,0.18))" }}
           />
-          {/* Blue gradient strip at bottom of image */}
+          {/* Transition strip from white to blue */}
           <div
             className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-            style={{ background: "linear-gradient(to top, rgba(240,247,255,1), transparent)" }}
+            style={{ background: "linear-gradient(to top, #edf3ff, transparent)" }}
           />
           {/* Close button */}
           <button
@@ -281,7 +281,10 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
         </div>
 
         {/* Content */}
-        <div className="p-8 flex flex-col gap-7">
+        <div
+          className="p-8 flex flex-col gap-7 rounded-b-3xl"
+          style={{ background: "linear-gradient(180deg, #edf3ff 0%, #dce8fa 100%)" }}
+        >
           {/* Title + tagline */}
           <div>
             <h2 className="text-2xl mb-1" style={{ ...ms700, color: "#0b2760" }}>
@@ -308,8 +311,9 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
                   key={spec.label}
                   className="rounded-2xl p-4 flex flex-col gap-1"
                   style={{
-                    background: "linear-gradient(135deg, #f0f7ff, #e8f1ff)",
-                    border: "1px solid rgba(14,74,173,0.08)",
+                    background: "#ffffff",
+                    border: "1px solid rgba(14,74,173,0.10)",
+                    boxShadow: "0 1px 4px rgba(14,74,173,0.06)",
                   }}
                 >
                   <span className="text-xs" style={{ ...ms500, color: "#7a9abf" }}>
@@ -335,7 +339,7 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
                   className="text-xs px-3 py-1.5 rounded-full"
                   style={{
                     ...ms500,
-                    background: "rgba(14,74,173,0.07)",
+                    background: "rgba(255,255,255,0.85)",
                     color: "#0E4AAD",
                     border: "1px solid rgba(14,74,173,0.14)",
                   }}
@@ -354,7 +358,7 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
             style={{
               ...ms700,
               background: "linear-gradient(135deg, #0E4AAD, #2072B9)",
-              boxShadow: "0 8px 24px rgba(14,74,173,0.30)",
+              boxShadow: "0 8px 24px rgba(14,74,173,0.35)",
             }}
           >
             Solicitar demonstração do {product.name}
@@ -1464,8 +1468,8 @@ const IdealElectricWay = () => {
               </h3>
 
               <p className="text-sm leading-relaxed mb-4" style={{ ...ms400, color: "#4a6080" }}>
-                Em breve, um de nossos consultores entrará em contato para agendar a demonstração na sua operação.
-                Fique atento ao seu WhatsApp e e-mail.
+                Em breve, um de nossos consultores entrará em contato para agendar a demonstração na sua operação. Fique
+                atento ao seu WhatsApp e e-mail.
               </p>
 
               <p
