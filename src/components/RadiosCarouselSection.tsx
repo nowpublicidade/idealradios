@@ -299,7 +299,7 @@ const RadiosCarouselSection = () => {
             <Button
               asChild
               size="lg"
-              className="bg-[#0E4AAD] hover:bg-[#2072B9] text-white font-bold shadow-lg shadow-[#0E4AAD]/20"
+              className="bg-[#0E4AAD] hover:bg-[#2072B9] text-white font-bold shadow-lg shadow-[#0E4AAD]/20 w-full sm:w-auto"
               style={ms}
             >
               <a href="#contato">Falar com um especialista</a>

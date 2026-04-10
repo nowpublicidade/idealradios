@@ -96,11 +96,11 @@ const ServiceBlock = ({
         ))}
       </ul>
 
-      <div className="pt-2 space-y-2">
+      <div className="pt-2 space-y-2 text-center lg:text-left">
         {ctaVariant === "solid" ? (
           <Button
             asChild
-            className="text-white"
+            className="text-white w-full sm:w-auto"
             style={{
               ...ms,
               background: "linear-gradient(90deg, #0E4AAD, #1F9CD8)",
@@ -110,7 +110,7 @@ const ServiceBlock = ({
             <a href="#contato">{ctaLabel}</a>
           </Button>
         ) : (
-          <Button asChild variant="outline" style={{ ...ms, borderColor: "rgba(31,156,216,0.40)", color: "#1F9CD8" }}>
+          <Button asChild variant="outline" className="w-full sm:w-auto" style={{ ...ms, borderColor: "rgba(31,156,216,0.40)", color: "#1F9CD8" }}>
             <a href="#contato">{ctaLabel}</a>
           </Button>
         )}

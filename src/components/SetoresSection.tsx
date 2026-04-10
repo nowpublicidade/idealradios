@@ -162,7 +162,7 @@ const SetoresSection = () => {
           </div>
 
           {/* Rodapé discreto */}
-          <p className="text-center mt-10 text-xs" style={{ ...ms4, color: "rgba(200,233,248,0.35)" }}>
+          <p className="text-center mt-10 text-xs hidden md:block" style={{ ...ms4, color: "rgba(200,233,248,0.35)" }}>
             Passe o mouse sobre cada setor para saber mais
           </p>
         </div>
