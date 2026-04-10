@@ -147,7 +147,7 @@ const ServicosSection = () => {
             ctaLabel="Solicitar assistência técnica agora"
             ctaVariant="solid"
             note="Diagnóstico sem compromisso · Peça original garantida"
-            imgSrc="46739a46-17a7-4f83-8657-571081049992.png"
+            imgSrc="/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg"
             imgAlt="Assistência técnica Ideal Rádios"
             badgeLabel="48h de atendimento"
             reverse={false}
@@ -171,7 +171,7 @@ const ServicosSection = () => {
             ctaLabel="Quero entender como migrar para digital"
             ctaVariant="outline"
             note="Consultoria gratuita · Sem compromisso"
-            imgSrc="f2defd73-33b5-40b1-8fa6-392dc44a3ca5.png"
+            imgSrc="/assets/radios/imgi_19_ideal-radios-servicos-especializados-600x400.jpeg"
             imgAlt="Sistemas DMR e TETRA"
             badgeLabel="Consultoria gratuita"
             reverse={true}
