@@ -51,13 +51,18 @@ const ServiceBlock = ({
   badgeLabel: string;
   reverse?: boolean;
 }) => (
-  <div className={`grid lg:grid-cols-2 gap-14 items-center max-w-5xl mx-auto ${reverse ? "" : ""}`}>
+  <div className="grid lg:grid-cols-2 gap-14 items-center max-w-5xl mx-auto">
     {/* Imagem */}
     <div className={`relative ${reverse ? "lg:order-2" : "lg:order-1"}`}>
-      <div className="rounded-2xl overflow-hidden shadow-xl" style={{ boxShadow: "0 8px 40px rgba(14,74,173,0.12)" }}>
-        <img src={imgSrc} alt={imgAlt} className="w-full h-64 object-cover" loading="lazy" />
+      <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(14,74,173,0.12)" }}>
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className="w-full object-cover"
+          style={{ height: 340, objectPosition: "center top" }}
+          loading="lazy"
+        />
       </div>
-      {/* Badge sobre imagem */}
       <div
         className="absolute -bottom-4 right-6 rounded-xl px-4 py-2 text-sm text-white"
         style={{
@@ -84,7 +89,6 @@ const ServiceBlock = ({
         {desc}
       </p>
 
-      {/* Lista limpa sem cards */}
       <ul className="space-y-3">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-3">
@@ -137,7 +141,7 @@ const ServicosSection = () => {
             </h2>
           </div>
 
-          {/* Bloco 1: Assistência */}
+          {/* Bloco 1: Assistência — foto 50.png */}
           <ServiceBlock
             tag="Assistência técnica autorizada"
             title="Seu rádio quebrou. A gente resolve em até"
@@ -147,21 +151,21 @@ const ServicosSection = () => {
             ctaLabel="Solicitar assistência técnica agora"
             ctaVariant="solid"
             note="Diagnóstico sem compromisso · Peça original garantida"
-            imgSrc="/assets/radios/imgi_17_ideal-radios-assitencia-tecnica-especializada-600x400.jpeg"
-            imgAlt="Assistência técnica Ideal Rádios"
+            imgSrc="/assets/50.png"
+            imgAlt="Técnico realizando assistência técnica em rádio Hytera"
             badgeLabel="48h de atendimento"
             reverse={false}
           />
 
-          {/* Divisor elegante */}
-          <div className="flex items-center gap-6 max-w-5xl mx-auto">
+          {/* Divisor */}
+          <div className="max-w-5xl mx-auto">
             <div
-              className="flex-1 h-px"
+              className="h-px"
               style={{ background: "linear-gradient(to right, transparent, rgba(14,74,173,0.15), transparent)" }}
             />
           </div>
 
-          {/* Bloco 2: DMR */}
+          {/* Bloco 2: DMR — foto 51.png */}
           <ServiceBlock
             tag="Sistemas DMR e TETRA"
             title="Enquanto você conserta o antigo,"
@@ -171,8 +175,8 @@ const ServicosSection = () => {
             ctaLabel="Quero entender como migrar para digital"
             ctaVariant="outline"
             note="Consultoria gratuita · Sem compromisso"
-            imgSrc="/assets/radios/imgi_19_ideal-radios-servicos-especializados-600x400.jpeg"
-            imgAlt="Sistemas DMR e TETRA"
+            imgSrc="/assets/51.png"
+            imgAlt="Especialista em sistemas DMR e TETRA"
             badgeLabel="Consultoria gratuita"
             reverse={true}
           />
