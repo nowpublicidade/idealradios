@@ -1,26 +1,25 @@
 
 
-## Problema
+## Plano de correção
 
-O GitHub Pages serve o site em `https://nowpublicidade.github.io/idealradios/` (subdiretório), mas o Vite gera os caminhos dos assets como `/assets/index-xxx.js`. O navegador busca em `nowpublicidade.github.io/assets/...` que não existe, resultando em tela branca.
+### Problema 1: Links internos com caminho absoluto
+Os links `href="/ideal-eletric-way"` no `Navbar.tsx` ignoram o `basename="/idealradios"` do React Router, levando o navegador para `nowpublicidade.github.io/ideal-eletric-way` (sem o `/idealradios/`).
 
-## Solução
+**Solução**: Trocar `<a href="/ideal-eletric-way">` por `<Link to="/ideal-eletric-way">` do `react-router-dom` no `Navbar.tsx` (desktop e mobile).
 
-Duas alterações simples:
+### Problema 2: Imagem hero da IEW não aparece
+Na linha 582 de `IdealElectricWay.tsx`, o `backgroundImage` usa um caminho hardcoded:
+```
+url('/assets/iew/hero-iew.png')
+```
+No GitHub Pages isso resolve para `/assets/iew/hero-iew.png` (raiz do domínio), mas o site está em `/idealradios/`. Precisa usar o helper `asset()`.
 
-### 1. Adicionar `base` no `vite.config.ts`
+**Solução**: Trocar o valor inline do `backgroundImage` para usar a função `asset()`:
+```
+backgroundImage: `url('${asset("/assets/iew/hero-iew.png")}')`
+```
 
-Configurar `base: "/idealradios/"` para que todos os caminhos de assets sejam gerados corretamente para o subdiretório do GitHub Pages.
-
-### 2. Ajustar o React Router no `App.tsx`
-
-Adicionar `basename="/idealradios"` no `<BrowserRouter>` para que as rotas do React Router funcionem dentro do subdiretório.
-
-### 3. Atualizar o `public/404.html`
-
-Ajustar o script de redirecionamento SPA para considerar o prefixo `/idealradios/`.
-
----
-
-**Resultado**: Ao fazer push dessas alterações, o GitHub Actions vai rebuildar e o site vai carregar corretamente em `nowpublicidade.github.io/idealradios/`.
+### Arquivos alterados
+1. **`src/components/Navbar.tsx`** — importar `Link` do react-router-dom; trocar 2 ocorrências de `<a href="/ideal-eletric-way">` por `<Link to="/ideal-eletric-way">`
+2. **`src/pages/IdealElectricWay.tsx`** — linha 582: usar `asset()` no `backgroundImage` do hero
 
