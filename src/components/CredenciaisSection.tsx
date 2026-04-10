@@ -229,7 +229,7 @@ const WingsCard = () => {
           Wings+
         </div>
         <div className="text-xs leading-snug" style={{ ...ms400, color: "rgba(200,233,248,0.50)" }}>
-          Hytera Partner — cert. internacional
+          Hytera Partner, cert. internacional
         </div>
       </div>
     </div>

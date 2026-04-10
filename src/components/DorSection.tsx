@@ -33,7 +33,7 @@ const DorSection = () => {
           <p className="mt-4 text-gray-500 text-lg leading-relaxed" style={ms4}>
             Talvez seus rádios estejam quebrando com frequência e você não tem onde levar. Ou a equipe está operando com
             equipamento velho que não alcança metade do local. Seja qual for o cenário: perder comunicação em campo não
-            é só inconveniente — é risco operacional real.
+            é só inconveniente, é risco operacional real.
           </p>
         </div>
 

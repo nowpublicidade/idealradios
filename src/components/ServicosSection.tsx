@@ -8,7 +8,7 @@ const ms6 = { fontFamily: "'Montserrat', sans-serif", fontWeight: 600 };
 
 const diferenciais = [
   "Técnicos certificados pela Motorola e pela Hytera",
-  "Peças 100% originais — sem paralelo, sem risco",
+  "Peças 100% originais, sem paralelo, sem risco",
   "Atendimento em até 48h úteis",
   "Manutenção preventiva e corretiva",
   "Atendimento in loco para grandes frotas",
@@ -166,7 +166,7 @@ const ServicosSection = () => {
             tag="Sistemas DMR e TETRA"
             title="Enquanto você conserta o antigo,"
             highlight="pensa no novo"
-            desc="Sistema analógico cansou? Interferência, alcance limitado, sem registro de chamada, sem GPS? A migração para digital é mais simples do que parece — e a Ideal faz tudo."
+            desc="Sistema analógico cansou? Interferência, alcance limitado, sem registro de chamada, sem GPS? A migração para digital é mais simples do que parece e a Ideal faz tudo."
             items={dmrItems}
             ctaLabel="Quero entender como migrar para digital"
             ctaVariant="outline"

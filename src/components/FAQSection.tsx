@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "Preciso de aprovação interna antes de contratar.",
-    a: "A gente prepara a proposta detalhada com especificações técnicas, valores e SLA — tudo que você precisa para apresentar internamente.",
+    a: "A gente prepara a proposta detalhada com especificações técnicas, valores e SLA. Tudo que você precisa para apresentar internamente.",
   },
   {
     q: "Como sabe que a peça é original?",
