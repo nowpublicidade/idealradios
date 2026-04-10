@@ -150,7 +150,7 @@ const SetoresSection = () => {
               </span>
             </h2>
             <p className="max-w-2xl mx-auto" style={{ ...ms4, color: "rgba(200,233,248,0.70)" }}>
-              De hospitais a petroquímicas, de eventos a shoppings. Cada operação tem sua necessidade — a gente
+              De hospitais a petroquímicas, de eventos a shoppings. Cada operação tem sua necessidade e a gente
               dimensiona a solução certa.
             </p>
           </div>
