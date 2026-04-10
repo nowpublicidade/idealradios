@@ -107,7 +107,7 @@ const mercados = [
   { icon: Anchor, label: "Portos" },
   { icon: Warehouse, label: "Condomínios Logísticos" },
   { icon: Cross, label: "Hospitais" },
-  { icon: Ferris, label: "Parques Temáticos" },
+  { icon: FerrisWheel, label: "Parques Temáticos" },
   { icon: CalendarCheck, label: "Eventos" },
   { icon: GraduationCap, label: "Campi Universitários" },
   { icon: Sparkles, label: "Facilities" },
