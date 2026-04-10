@@ -4,7 +4,7 @@ import {
   Leaf, Battery, DollarSign, Wrench, Car, Headphones,
   ShoppingBag, Plane, Factory, Anchor, Stethoscope,
   TreePine, Calendar, GraduationCap, Settings,
-  Phone, ExternalLink, ChevronRight, Quote, ArrowLeft,
+  Phone, ChevronRight, Quote, ArrowLeft,
   Menu, X, Zap, Mail, Globe, MessageSquare, User, Building2
 } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
