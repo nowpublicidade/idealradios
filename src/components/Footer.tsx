@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import { asset } from "@/lib/assets";
 
 const ms = { fontFamily: "'Montserrat', sans-serif", fontWeight: 700 };
@@ -34,7 +35,6 @@ const Footer = () => {
                 { label: "Produtos", href: "#produtos" },
                 { label: "Serviços", href: "#setores" },
                 { label: "Empresa", href: "#empresa" },
-                { label: "Ideal Electric Way", href: "/idealradios/ideal-eletric-way" },
                 { label: "Contato", href: "#contato" },
               ].map((l) => (
                 <a
@@ -46,6 +46,13 @@ const Footer = () => {
                   {l.label}
                 </a>
               ))}
+              <Link
+                to="/ideal-eletric-way"
+                className="text-sm transition-colors hover:opacity-90"
+                style={{ ...ms4, color: "rgba(200,233,248,0.50)" }}
+              >
+                Ideal Electric Way
+              </Link>
             </div>
           </div>
 
