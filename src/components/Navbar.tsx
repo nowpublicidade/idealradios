@@ -134,7 +134,7 @@ const Navbar = () => {
               href="/ideal-eletric-way"
               onClick={() => setOpen(false)}
               className="block text-sm py-2 border-b"
-              style={{ ...ms600, color: "#1F9CD8", borderColor: "rgba(14,74,173,0.08)" }}
+              style={{ ...ms600, color: "#16A34A", borderColor: "rgba(14,74,173,0.08)" }}
             >
               ⚡ Ideal Electric Way
             </a>
