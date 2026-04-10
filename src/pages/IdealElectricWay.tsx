@@ -247,7 +247,7 @@ const IdealElectricWay = () => {
           <div className="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/3 flex justify-center">
               <img
-                src="/assets/imgi_15_logo-iew-768x768.jpeg"
+                src="/assets/iew-frota.png"
                 alt="Logo Ideal Electric Way"
                 className="w-48 md:w-56 rounded-2xl"
                 style={{ boxShadow: "0 8px 32px rgba(14,74,173,0.10)" }}
