@@ -2,9 +2,13 @@
 <html>
 <head>
   <script>
-    // Redireciona rotas SPA para o index
+    // Redireciona rotas SPA para o index dentro do subdiretório
+    var prefix = '/idealradios';
     var path = window.location.pathname;
-    window.location.replace('/' + '?p=' + path);
+    if (path.indexOf(prefix) === 0) {
+      path = path.slice(prefix.length);
+    }
+    window.location.replace(prefix + '/?p=' + path);
   </script>
 </head>
 </html>
