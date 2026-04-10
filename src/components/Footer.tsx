@@ -34,7 +34,7 @@ const Footer = () => {
                 { label: "Produtos", href: "#produtos" },
                 { label: "Serviços", href: "#setores" },
                 { label: "Empresa", href: "#empresa" },
-                { label: "Ideal Electric Way", href: "/ideal-eletric-way" },
+                { label: "Ideal Electric Way", href: "/idealradios/ideal-eletric-way" },
                 { label: "Contato", href: "#contato" },
               ].map((l) => (
                 <a
