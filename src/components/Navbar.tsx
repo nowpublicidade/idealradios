@@ -43,12 +43,12 @@ const Navbar = () => {
             transition: "all 0.35s ease",
           }}
         >
-          {/* Logo — aumentada de h-8 para h-11 */}
+          {/* Logo */}
           <a href="#" className="flex items-center gap-2 shrink-0">
             <img
               src={asset("/assets/logo-branca.png")}
               alt="Ideal Rádios"
-              className="h-11 transition-all duration-300"
+              className="h-16 md:h-20 transition-all duration-300"
               style={{ filter: scrolled ? "invert(1) hue-rotate(195deg) brightness(0.35)" : "none" }}
             />
           </a>
