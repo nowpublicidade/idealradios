@@ -31,7 +31,7 @@ const Navbar = () => {
         style={{ paddingTop: scrolled ? 8 : 16, transition: "padding 0.35s ease" }}
       >
         <nav
-          className="w-full max-w-5xl flex items-center justify-between h-14 px-5 rounded-2xl"
+          className="w-full max-w-5xl flex items-center justify-between h-16 md:h-[72px] px-5 rounded-2xl overflow-hidden"
           style={{
             background: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.18)",
             backdropFilter: "blur(18px)",
@@ -48,7 +48,7 @@ const Navbar = () => {
             <img
               src={asset("/assets/logo-branca.png")}
               alt="Ideal Rádios"
-              className="h-16 md:h-20 transition-all duration-300"
+              className="h-10 md:h-12 w-auto transition-all duration-300"
               style={{ filter: scrolled ? "invert(1) hue-rotate(195deg) brightness(0.35)" : "none" }}
             />
           </a>
