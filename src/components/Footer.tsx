@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10">
           {/* Marca */}
           <div className="space-y-3">
-            <img src={asset("/assets/logo-branca.png")} alt="Ideal Rádios" className="h-8" />
+            <img src={asset("/assets/logo-branca.png")} alt="Ideal Rádios" className="h-14" />
             <p className="text-sm leading-relaxed" style={{ ...ms4, color: "rgba(200,233,248,0.50)" }}>
               Radiocomunicação profissional para operações que não podem parar.
             </p>

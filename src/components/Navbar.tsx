@@ -48,7 +48,7 @@ const Navbar = () => {
             <img
               src={asset("/assets/logo-branca.png")}
               alt="Ideal Rádios"
-              className="h-10 md:h-12 w-auto transition-all duration-300"
+              className="h-14 md:h-16 w-auto transition-all duration-300"
               style={{ filter: scrolled ? "invert(1) hue-rotate(195deg) brightness(0.35)" : "none" }}
             />
           </a>
