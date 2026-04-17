@@ -102,6 +102,27 @@ const products = [
     },
   },
   {
+    name: "IEW-T20",
+    subtitle: "Moto Elétrica 12.000W",
+    img: asset("/assets/iew/moto-iew-t20.jpeg"),
+    desc: "Desempenho e resistência para patrulhamento em qualquer terreno. Estrutura reforçada para operações off-road exigentes.",
+    modal: {
+      tagline: "Potência além do asfalto",
+      about:
+        "A IEW-T20 foi projetada para ir além do asfalto. Com motor de 12.000W, autonomia de até 100 km e estrutura reforçada, ela garante desempenho real em operações que exigem resistência, agilidade e confiabilidade — do pátio industrial à estrada de terra.",
+      specs: [
+        { label: "Velocidade máx.", value: "até 100 km/h" },
+        { label: "Autonomia", value: "até 100 km" },
+        { label: "Capacidade de carga", value: "até 150 kg" },
+        { label: "Potência do motor", value: "12.000 W" },
+        { label: "Bateria", value: "Lítio 72V removível" },
+        { label: "Transmissão", value: "Motor central com correia" },
+        { label: "Freios", value: "Disco com sistema CBS" },
+      ],
+      ideal: ["Patrulhamento off-road", "Pátios industriais", "Áreas rurais e estradas de terra", "Operações de segurança"],
+    },
+  },
+  {
     name: "IEW-C30",
     subtitle: "Cadeira de Rodas Motorizada",
     img: asset("/assets/iew/imgi_3_Site-Mirage-SX-01-730x730-1-600x600-1.jpeg"),
